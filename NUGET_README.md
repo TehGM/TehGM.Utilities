@@ -11,4 +11,4 @@ This project currently contains following libraries:
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 
 ### Source Repository
-Wolfringo is open source, with code hosted on [GitHub](https://github.com/TehGM/Wolfringo).
+TehGM.Utilities is open source, with code hosted on [GitHub](https://github.com/TehGM/TehGM.Utilities).
