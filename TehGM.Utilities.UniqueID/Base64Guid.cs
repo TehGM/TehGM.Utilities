@@ -114,12 +114,20 @@ namespace TehGM.Utilities
         public static bool operator !=(Base64Guid left, string right)
             => !(left == right);
 
+        /// <summary>Converts base64 guid wrapper to a normal guid.</summary>
+        /// <param name="value">Normal guid value.</param>
         public static implicit operator Guid(Base64Guid value)
             => value.Value;
+        /// <summary>Converts base64 guid wrapper to string representation.</summary>
+        /// <param name="value">22 character string ID.</param>
         public static implicit operator string(Base64Guid value)
             => value.ToString();
+        /// <summary>Converts a standard guid into a base64 wrapper.</summary>
+        /// <param name="value">Base64 wrapped guid.</param>
         public static implicit operator Base64Guid(Guid value)
             => new Base64Guid(value);
+        /// <summary>Converts string representation ID to base64 guid wrapper.</summary>
+        /// <param name="value">Base64 wrapped guid.</param>
         public static implicit operator Base64Guid(string value)
             => new Base64Guid(value);
     }
