@@ -162,7 +162,7 @@ namespace TehGM.Utilities.UniqueID.Tests
 
         [Test]
         [Repeat(3)]
-        [Category(TestCategoryName.Conversion)]
+        [Category(TestCategoryName.Conversions)]
         public void ImplicitConversion_FromGuid_ReturnsSameGuid()
         {
             Guid guid = Guid.NewGuid();
@@ -176,7 +176,7 @@ namespace TehGM.Utilities.UniqueID.Tests
         [TestCase("fWdQp6v36EOjBsT1a18b2Q", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
         [TestCase("8KVZQg08_0CJjrEnGNEixw", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
         [TestCase("2T-cNnAURUOUmp0yCznKLg", "369c3fd9-1470-4345-949a-9d320b39ca2e")]
-        [Category(TestCategoryName.Conversion)]
+        [Category(TestCategoryName.Conversions)]
         public void ImplicitConversion_FromString_ReturnsCorrectGuid(string stringRepresentation, string expectedResultString)
         {
             Guid expectedResult = Guid.Parse(expectedResultString);
@@ -188,7 +188,7 @@ namespace TehGM.Utilities.UniqueID.Tests
 
         [Test]
         [Repeat(3)]
-        [Category(TestCategoryName.Conversion)]
+        [Category(TestCategoryName.Conversions)]
         public void ImplicitConversion_ToGuid_ReturnsCorrectGuid()
         {
             Guid guid = Guid.NewGuid();
@@ -204,13 +204,39 @@ namespace TehGM.Utilities.UniqueID.Tests
         [TestCase("a750677d-f7ab-43e8-a306-c4f56b5f1bd9", "fWdQp6v36EOjBsT1a18b2Q")]
         [TestCase("4259a5f0-3c0d-40ff-898e-b12718d122c7", "8KVZQg08_0CJjrEnGNEixw")]
         [TestCase("369c3fd9-1470-4345-949a-9d320b39ca2e", "2T-cNnAURUOUmp0yCznKLg")]
-        [Category(TestCategoryName.Conversion)]
+        [Category(TestCategoryName.Conversions)]
         public void ImplicitConversion_ToString_ReturnsCorrectRepresentation(string guidString, string expectedResult)
         {
             Guid guid = Guid.Parse(guidString);
             Base64Guid id = new Base64Guid(guid);
 
             string result = id;
+
+            result.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [Repeat(3)]
+        [Category(TestCategoryName.Extensions)]
+        public void ExtensionConversion_ToBase64Guid_ReturnsSameGuid()
+        {
+            Guid guid = Guid.NewGuid();
+
+            Base64Guid result = guid.ToBase64Guid();
+
+            result.Value.Should().Be(guid);
+        }
+
+        [Test]
+        [TestCase("a750677d-f7ab-43e8-a306-c4f56b5f1bd9", "fWdQp6v36EOjBsT1a18b2Q")]
+        [TestCase("4259a5f0-3c0d-40ff-898e-b12718d122c7", "8KVZQg08_0CJjrEnGNEixw")]
+        [TestCase("369c3fd9-1470-4345-949a-9d320b39ca2e", "2T-cNnAURUOUmp0yCznKLg")]
+        [Category(TestCategoryName.Extensions)]
+        public void ExtensionConversion_ToBase64GuidString_ReturnsCorrectRepresentation(string guidString, string expectedResult)
+        {
+            Guid guid = Guid.Parse(guidString);
+
+            string result = guid.ToBase64GuidString();
 
             result.Should().Be(expectedResult);
         }

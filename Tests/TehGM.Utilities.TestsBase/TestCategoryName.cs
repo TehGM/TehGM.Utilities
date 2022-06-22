@@ -3,6 +3,7 @@
     public static class TestCategoryName
     {
         public const string Constructor = "ctor";
-        public const string Conversion = "Conversion";
+        public const string Conversions = "Conversions";
+        public const string Extensions = "Extensions";
     }
 }
