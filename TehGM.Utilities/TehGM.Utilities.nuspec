@@ -17,7 +17,8 @@
 	</releaseNotes>
     <dependencies>
       <group>
-        <dependency id="TehGM.Utilities.DisplayGuid" version="1.0.0" />
+        <dependency id="TehGM.Utilities.UniqueID" version="0.1.0" />
+        <dependency id="TehGM.Utilities.Logging" version="0.1.0" />
       </group>
     </dependencies>
   </metadata>

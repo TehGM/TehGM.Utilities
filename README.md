@@ -7,6 +7,7 @@ This solution contains utility libraries that I created to make features easy to
 This project currently contains following libraries:
 
 - [TehGM.Utilities.UniqueID](TehGM.Utilities.UniqueID) - includes types and methods for generating unique IDs.
+- [TehGM.Utilities.Logging](TehGM.Utilities.Logging) - includes helpers for logging.
 
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 
