@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <PackageId>TehGM.Utilities.DisplayGuid</PackageId>
+	  <TargetFramework>netstandard2.0</TargetFramework>
+	  <RootNamespace>TehGM.Utilities</RootNamespace>
+	  <Version>1.0.0</Version>
+	  <Authors>TehGM</Authors>
+	  <Product>TehGM's Utilities Library - Display GUID</Product>
+	  <RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
+	  <Copyright>Copyright (c) 2022 TehGM</Copyright>
+	  <Description>.NET Utilities for generating Unique IDs</Description>
+	  <PackageProjectUrl>https://github.com/TehGM/TehGM.Utilities</PackageProjectUrl>
+	  <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+	  <FileVersion>1.0.0.0</FileVersion>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <RepositoryType>git</RepositoryType>
+	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Update="README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>

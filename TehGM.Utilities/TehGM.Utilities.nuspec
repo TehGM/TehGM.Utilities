@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>TehGM.Utilities</id>
-    <version>1.0.0</version>
+    <version>0.1.0</version>
     <title>TehGM's C# Utilities</title>
     <authors>TehGM</authors>
     <owners>TehGM</owners>
@@ -17,7 +17,7 @@
 	</releaseNotes>
     <dependencies>
       <group>
-        <dependency id="TehGM.Utilities.TimeFormatting" version="1.0.0" />
+        <dependency id="TehGM.Utilities.DisplayGuid" version="1.0.0" />
       </group>
     </dependencies>
   </metadata>

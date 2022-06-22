@@ -4,9 +4,9 @@
 This solution contains utility libraries that I created to make features easy to re-use in multiple projects.
 
 ### Included Libraries
-This project currently contains following libraries:
+This NuGet package currently contains following libraries:
 
-- ***TehGM.Utilities.TimeFormatting*** - includes utilities for formatting TimeSpan strings.
+- ***TehGM.Utilities.UniqueID*** - includes types and methods for generating unique IDs.
 
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 
