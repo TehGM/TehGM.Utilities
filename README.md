@@ -3,20 +3,32 @@
 
 This solution contains utility libraries that I created to make features easy to re-use in multiple projects.
 
-### Included Libraries
-This project currently contains following libraries:
+## Installation
+Install `TehGM.Utilities` using your NuGet package manager.
 
-- [TehGM.Utilities.UniqueID](TehGM.Utilities.UniqueID) - includes types and methods for generating unique IDs.
-- [TehGM.Utilities.Logging](TehGM.Utilities.Logging) - includes helpers for logging.
-- [TehGM.Utilities.Randomization](TehGM.Utilities.Logging) - utilities for generating random values.
-- [TehGM.Utilities.Time](TehGM.Utilities.Time) - time conversion and formatting utilities.
-
-More libraries might be added as needed, when needed (by me)... or when I feel like it.
+Alternatively, you can install selected libraries individually.
 
 ### Requirements
 The library targets [.NET Standard 2.0](https://docs.microsoft.com/en-gb/dotnet/standard/net-standard), and therefore works with .NET Core 2.0+, .NET Framework 4.6.1+ and .NET 5+.
 
-### Contributing
+## Included Libraries
+This project currently contains following libraries:
+
+- [TehGM.Utilities.UniqueID](TehGM.Utilities.UniqueID) - includes types and methods for generating unique IDs.
+- [TehGM.Utilities.Logging](TehGM.Utilities.Logging) - includes helpers for logging.
+- [TehGM.Utilities.Randomization](TehGM.Utilities.Randomization) - utilities for generating random values.
+- [TehGM.Utilities.Time](TehGM.Utilities.Time) - time conversion and formatting utilities.
+- [TehGM.Utilities.Validation](TehGM.Utilities.Validation) - type and data validation utilities.
+
+More libraries might be added as needed, when needed (by me)... or when I feel like it.
+
+### JSON.NET Support
+Some of the libraries might have an additional package, which extends their functionality by adding JSON.NET support (such as converters).  
+These libraries need to be installed separately. This is because they depend on Newtonsoft.Json package, which might only pollute projects that don't make use of it
+
+- [TehGM.Utilities.Time.JsonNet](JsonNet/TehGM.Utilities.Time.JsonNet) - JSON.NET support for [TehGM.Utilities.Time](TehGM.Utilities.Time).
+
+## Contributing
 In case you want to report a bug or request a new feature, open a new [Issue](https://github.com/TehGM/TehGM.Utilities/issues).
 
 If you want to contribute a patch or update, fork repository, implement the change, and open a pull request.

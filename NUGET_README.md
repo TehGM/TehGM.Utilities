@@ -3,13 +3,22 @@
 
 This solution contains utility libraries that I created to make features easy to re-use in multiple projects.
 
-### Included Libraries
+## Included Libraries
 This NuGet package currently contains following libraries:
 
 - ***TehGM.Utilities.UniqueID*** - includes types and methods for generating unique IDs.
 - ***TehGM.Utilities.Logging*** - includes helpers for logging.
+- ***TehGM.Utilities.Randomization*** - utilities for generating random values.
+- ***TehGM.Utilities.Time*** - time conversion and formatting utilities.
+- ***TehGM.Utilities.Validation*** - type and data validation utilities.
 
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 
-### Source Repository
+### JSON.NET Support
+Some of the libraries might have an additional package, which extends their functionality by adding JSON.NET support (such as converters).  
+These libraries need to be installed separately. This is because they depend on Newtonsoft.Json package, which might only pollute projects that don't make use of it
+
+- ***TehGM.Utilities.Time.JsonNet*** - JSON.NET support for **TehGM.Utilities.Time**.
+
+## Source Repository
 TehGM.Utilities is open source, with code hosted on [GitHub](https://github.com/TehGM/TehGM.Utilities).
