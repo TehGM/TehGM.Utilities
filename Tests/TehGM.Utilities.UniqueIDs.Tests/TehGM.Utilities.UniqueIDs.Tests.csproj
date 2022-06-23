@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TehGM.Utilities.UniqueID\TehGM.Utilities.UniqueID.csproj" />
+    <ProjectReference Include="..\..\TehGM.Utilities.UniqueID\TehGM.Utilities.UniqueIDs.csproj" />
     <ProjectReference Include="..\TehGM.Utilities.TestsBase\TehGM.Utilities.TestsBase.csproj" />
   </ItemGroup>
 

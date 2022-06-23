@@ -14,11 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TehGM.Utilities\TehGM.Utilities.nuspec = TehGM.Utilities\TehGM.Utilities.nuspec
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.UniqueID", "TehGM.Utilities.UniqueID\TehGM.Utilities.UniqueID.csproj", "{FE62B7F1-CB38-417F-A89A-BCE81D249851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.UniqueIDs", "TehGM.Utilities.UniqueIDs\TehGM.Utilities.UniqueIDs.csproj", "{FE62B7F1-CB38-417F-A89A-BCE81D249851}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{040A73CB-9C79-4305-91B4-DFC038F184DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.UniqueID.Tests", "Tests\TehGM.Utilities.UniqueID.Tests\TehGM.Utilities.UniqueID.Tests.csproj", "{3857266E-65B0-4660-8673-7D9B7091B388}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.UniqueIDs.Tests", "Tests\TehGM.Utilities.UniqueIDs.Tests\TehGM.Utilities.UniqueIDs.Tests.csproj", "{3857266E-65B0-4660-8673-7D9B7091B388}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.TestsBase", "Tests\TehGM.Utilities.TestsBase\TehGM.Utilities.TestsBase.csproj", "{A35C6D8A-5E7F-4833-9170-59FE07A0796D}"
 EndProject
@@ -36,9 +36,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonNet", "JsonNet", "{7309
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Time.JsonNet", "JsonNet\TehGM.Utilities.Time.JsonNet\TehGM.Utilities.Time.JsonNet.csproj", "{6DE53A66-CEDC-447A-8CA6-9E361888B62A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TehGM.Utilities.Validation", "TehGM.Utilities.Validation\TehGM.Utilities.Validation.csproj", "{0FC1A9CB-6AEB-4838-8296-E5AE25DCBA5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Validation", "TehGM.Utilities.Validation\TehGM.Utilities.Validation.csproj", "{0FC1A9CB-6AEB-4838-8296-E5AE25DCBA5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TehGM.Utilities.Validation.Tests", "Tests\TehGM.Utilities.Validation.Tests\TehGM.Utilities.Validation.Tests.csproj", "{29F85359-9C55-40DA-B10C-E663AFC8CB09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Validation.Tests", "Tests\TehGM.Utilities.Validation.Tests\TehGM.Utilities.Validation.Tests.csproj", "{29F85359-9C55-40DA-B10C-E663AFC8CB09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

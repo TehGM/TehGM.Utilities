@@ -1,4 +1,4 @@
-namespace TehGM.Utilities.UniqueID.Tests
+namespace TehGM.Utilities.UniqueIDs.Tests
 {
     [TestFixture]
     [TestOf(typeof(Base64Guid))]

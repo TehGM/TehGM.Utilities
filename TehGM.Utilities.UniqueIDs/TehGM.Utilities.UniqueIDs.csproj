@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <PackageId>TehGM.Utilities.UniqueID</PackageId>
+	  <PackageId>TehGM.Utilities.UniqueIDs</PackageId>
 	  <TargetFramework>netstandard2.0</TargetFramework>
 	  <RootNamespace>TehGM.Utilities</RootNamespace>
 	  <Version>0.1.0</Version>
