@@ -30,7 +30,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Randomizati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Randomization.Tests", "Tests\TehGM.Utilities.Randomization.Tests\TehGM.Utilities.Randomization.Tests.csproj", "{2E51AE67-0307-432F-9A91-80367EBE2F09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TehGM.Utilities.Time.Tests", "Tests\TehGM.Utilities.Time.Tests\TehGM.Utilities.Time.Tests.csproj", "{C1ECB473-F751-4DAD-A2DB-43070076055F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Time.Tests", "Tests\TehGM.Utilities.Time.Tests\TehGM.Utilities.Time.Tests.csproj", "{C1ECB473-F751-4DAD-A2DB-43070076055F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonNet", "JsonNet", "{730980FD-4811-4DC7-8EC5-D5BA6724C78A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TehGM.Utilities.Time.JsonNet", "JsonNet\TehGM.Utilities.Time.JsonNet\TehGM.Utilities.Time.JsonNet.csproj", "{6DE53A66-CEDC-447A-8CA6-9E361888B62A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +78,10 @@ Global
 		{C1ECB473-F751-4DAD-A2DB-43070076055F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1ECB473-F751-4DAD-A2DB-43070076055F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1ECB473-F751-4DAD-A2DB-43070076055F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE53A66-CEDC-447A-8CA6-9E361888B62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE53A66-CEDC-447A-8CA6-9E361888B62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE53A66-CEDC-447A-8CA6-9E361888B62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE53A66-CEDC-447A-8CA6-9E361888B62A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +92,7 @@ Global
 		{F1D0BCC2-0132-4D1C-B912-CB36A11FBFDF} = {040A73CB-9C79-4305-91B4-DFC038F184DE}
 		{2E51AE67-0307-432F-9A91-80367EBE2F09} = {040A73CB-9C79-4305-91B4-DFC038F184DE}
 		{C1ECB473-F751-4DAD-A2DB-43070076055F} = {040A73CB-9C79-4305-91B4-DFC038F184DE}
+		{6DE53A66-CEDC-447A-8CA6-9E361888B62A} = {730980FD-4811-4DC7-8EC5-D5BA6724C78A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D7A9DC7-DD85-42FA-89BE-99FEFD7C10C4}

@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>TehGM.Utilities.TimeFormatting</PackageId>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>TehGM.Utilities</RootNamespace>
+		<Version>0.1.0</Version>
+		<Authors>TehGM</Authors>
+		<Product>TehGM's Utilities Library - Time Formatting</Product>
+		<RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
+		<Copyright>Copyright (c) 2022 TehGM</Copyright>
+		<Description>.NET Utilities for Time Formatting</Description>
+		<PackageProjectUrl>https://github.com/TehGM/TehGM.Utilities</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<AssemblyVersion>0.1.0.0</AssemblyVersion>
+		<FileVersion>0.1.0.0</FileVersion>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryType>git</RepositoryType>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageReadmeFile>NUGET_README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="README.md">
+			<PackagePath>\</PackagePath>
+			<Pack>True</Pack>
+		</None>
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TehGM.Utilities.Time\TehGM.Utilities.Time.csproj" />
+  </ItemGroup>
+
+</Project>
