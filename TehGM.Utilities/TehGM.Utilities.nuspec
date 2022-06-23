@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>TehGM.Utilities</id>
+    <version>0.1.0</version>
+    <title>TehGM's C# Utilities</title>
+    <authors>TehGM</authors>
+    <owners>TehGM</owners>
+    <description>Reusable set of utilities for C#.</description>
+    <projectUrl>https://github.com/TehGM/TehGM.Utilities</projectUrl>
+	<readme>NUGET_README.md</readme>
+    <repository type="git" url="https://github.com/TehGM/TehGM.Utilities" />
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <copyright>Copyright (c) 2022 TehGM</copyright>
+    <releaseNotes>
+	</releaseNotes>
+    <dependencies>
+      <group>
+        <dependency id="TehGM.Utilities.UniqueID" version="0.1.0" />
+        <dependency id="TehGM.Utilities.Logging" version="0.1.0" />
+        <dependency id="TehGM.Utilities.Randomization" version="0.1.0" />
+        <dependency id="TehGM.Utilities.Time" version="0.1.0" />
+        <dependency id="TehGM.Utilities.Validation" version="0.1.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="..\NUGET_README.md" target="" />
+  </files>
+</package>
