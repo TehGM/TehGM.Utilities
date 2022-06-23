@@ -3,6 +3,11 @@
 
 This solution contains utility libraries that I created to make features easy to re-use in multiple projects.
 
+#### Work in Progress
+This set of libraries is currently Work in Progress - and it might stay in this state indefinitely.  
+These libraries are designed primarily for personal use, so I do not guarantee that updates don't include breaking changes.  
+Keep this in mind if upgrading these libraries for any version before `1.0.0`.
+
 ## Installation
 Install `TehGM.Utilities` using your NuGet package manager.
 
