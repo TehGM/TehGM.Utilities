@@ -48,6 +48,8 @@ jobs:
           dotnet-version: 6.0.x
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
+      - name: Exclude test projects
+        run: dotnet sln remove Tests/**
       - name: Install dependencies
         run: dotnet restore
       - name: Setup latest NuGet preview version
@@ -88,7 +90,7 @@ jobs:
         if: github.event.inputs.publishTimeJsonNet == 'Y'
         run: |
           mkdir __out
-          dotnet pack TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
+          dotnet pack JsonNet/TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities.Validation
