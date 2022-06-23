@@ -20,6 +20,7 @@
         <dependency id="TehGM.Utilities.UniqueID" version="0.1.0" />
         <dependency id="TehGM.Utilities.Logging" version="0.1.0" />
         <dependency id="TehGM.Utilities.Randomization" version="0.1.0" />
+        <dependency id="TehGM.Utilities.Time" version="0.1.0" />
       </group>
     </dependencies>
   </metadata>
