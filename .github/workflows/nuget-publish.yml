@@ -48,7 +48,6 @@ jobs:
           dotnet-version: 6.0.x
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
-		  
       - name: Install dependencies
         run: dotnet restore
       - name: Setup latest NuGet preview version
@@ -64,7 +63,6 @@ jobs:
           dotnet pack TehGM.Utilities.UniqueIDs -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
-		
       - name: Publish TehGM.Utilities.Logging
         if: github.event.inputs.publishLogging == 'Y'
         run: |
@@ -72,7 +70,6 @@ jobs:
           dotnet pack TehGM.Utilities.Logging -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
-		
       - name: Publish TehGM.Utilities.Randomization
         if: github.event.inputs.publishRandomization == 'Y'
         run: |
@@ -80,7 +77,6 @@ jobs:
           dotnet pack TehGM.Utilities.Randomization -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
-		
       - name: Publish TehGM.Utilities.Time
         if: github.event.inputs.publishTime == 'Y'
         run: |
@@ -88,7 +84,6 @@ jobs:
           dotnet pack TehGM.Utilities.Time -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
-		
       - name: Publish TehGM.Utilities.Time.JsonNet
         if: github.event.inputs.publishTimeJsonNet == 'Y'
         run: |
@@ -96,7 +91,6 @@ jobs:
           dotnet pack TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
-		  
       - name: Publish TehGM.Utilities.Validation
         if: github.event.inputs.publishValidation == 'Y'
         run: |
@@ -104,7 +98,6 @@ jobs:
           dotnet pack TehGM.Utilities.Validation -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
-		
       - name: Publish TehGM.Utilities metapackage
         if: github.event.inputs.publishMetapackage == 'Y'
         run: |
