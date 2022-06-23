@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TehGM.Utilities.Random
+namespace TehGM.Utilities.Randomization
 {
     /// <summary>Represents a seed for random number generators such as <see cref="Random"/>.</summary>
     /// <remarks>Hash code in later versions on .NET is deterministic only in one application domain.

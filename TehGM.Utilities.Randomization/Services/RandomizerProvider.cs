@@ -1,4 +1,4 @@
-﻿namespace TehGM.Utilities.Random.Services
+﻿namespace TehGM.Utilities.Randomization.Services
 {
     /// <inheritdoc/>
     public class RandomizerProvider : IRandomizerProvider

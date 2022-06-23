@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TehGM.Utilities.Random
+namespace TehGM.Utilities.Randomization
 {
     /// <summary>Extensions for <see cref="IRandomizer"/> and <see cref="IRandomizerProvider"/>.</summary>
     public static class RandomizerExtensions

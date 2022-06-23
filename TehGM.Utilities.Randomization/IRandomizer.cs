@@ -1,4 +1,4 @@
-﻿namespace TehGM.Utilities.Random
+﻿namespace TehGM.Utilities.Randomization
 {
     /// <summary>Represents random number generator as a service.</summary>
     public interface IRandomizer

@@ -1,4 +1,4 @@
-namespace TehGM.Utilities.Random.Tests
+namespace TehGM.Utilities.Randomization.Tests
 {
     [TestFixture]
     [TestOf(typeof(RandomSeed))]

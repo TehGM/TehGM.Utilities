@@ -1,4 +1,4 @@
-﻿namespace TehGM.Utilities.Random
+﻿namespace TehGM.Utilities.Randomization
 {
     /// <summary>Manages and allows retrieving of <see cref="IRandomizer"/> instances.</summary>
     public interface IRandomizerProvider

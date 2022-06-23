@@ -1,6 +1,6 @@
-﻿using TehGM.Utilities.Random.Services;
+﻿using TehGM.Utilities.Randomization.Services;
 
-namespace TehGM.Utilities.Random.Tests
+namespace TehGM.Utilities.Randomization.Tests
 {
     [TestFixture]
     [TestOf(typeof(RandomizerProvider))]

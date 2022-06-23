@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\TehGM.Utilities.Random\TehGM.Utilities.Random.csproj" />
+	  <ProjectReference Include="..\..\TehGM.Utilities.Randomization\TehGM.Utilities.Randomization.csproj" />
 	  <ProjectReference Include="..\TehGM.Utilities.TestsBase\TehGM.Utilities.TestsBase.csproj" />
 	</ItemGroup>
 
