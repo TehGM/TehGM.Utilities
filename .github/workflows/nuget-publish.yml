@@ -63,47 +63,47 @@ jobs:
         run: |
           mkdir __out
           dotnet pack TehGM.Utilities.UniqueIDs -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities.Logging
         if: github.event.inputs.publishLogging == 'Y'
         run: |
           mkdir __out
           dotnet pack TehGM.Utilities.Logging -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities.Randomization
         if: github.event.inputs.publishRandomization == 'Y'
         run: |
           mkdir __out
           dotnet pack TehGM.Utilities.Randomization -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities.Time
         if: github.event.inputs.publishTime == 'Y'
         run: |
           mkdir __out
           dotnet pack TehGM.Utilities.Time -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities.Time.JsonNet
         if: github.event.inputs.publishTimeJsonNet == 'Y'
         run: |
           mkdir __out
           dotnet pack JsonNet/TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities.Validation
         if: github.event.inputs.publishValidation == 'Y'
         run: |
           mkdir __out
           dotnet pack TehGM.Utilities.Validation -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities metapackage
         if: github.event.inputs.publishMetapackage == 'Y'
         run: |
           mkdir __out
           nuget pack "TehGM.Utilities/TehGM.Utilities.nuspec" -Exclude "*.*" -BasePath "TehGM.Utilities" -NonInteractive -OutputDirectory __out
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_TOKEN}}
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
