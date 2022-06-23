@@ -8,6 +8,7 @@ This project currently contains following libraries:
 
 - [TehGM.Utilities.UniqueID](TehGM.Utilities.UniqueID) - includes types and methods for generating unique IDs.
 - [TehGM.Utilities.Logging](TehGM.Utilities.Logging) - includes helpers for logging.
+- [TehGM.Utilities.Randomization](TehGM.Utilities.Logging) - utilities for generating random values.
 
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 

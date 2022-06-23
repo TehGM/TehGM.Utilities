@@ -4,6 +4,8 @@
 This library contains a set of types, wrappers and methods for random number generation.
 
 - **RandomSeed** - an utility type, which is designed to provide cross application domain deterministic string to hashcode conversion.
+- **IRandomizer** and **RandomizerService** - a Dependency-Injection friendly wrapper for *Random*, with additional extension methods.
+- **IRandomizerProvider** and **RandomizerProvider - a Dependency-Injection friendly container and creater for **IRandomizers**.
 
 ## License
 Copyright (c) 2022 TehGM 
