@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	
 	<PropertyGroup>
-		<PackageId>TehGM.Utilities.Random</PackageId>
+		<PackageId>TehGM.Utilities.Randomization</PackageId>
 		<TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
 		<RootNamespace>TehGM.Utilities</RootNamespace>
 		<Version>0.1.0</Version>
 		<Authors>TehGM</Authors>
-		<Product>TehGM's Utilities Library - Random</Product>
+		<Product>TehGM's Utilities Library - Randomization</Product>
 		<RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
 		<Copyright>Copyright (c) 2022 TehGM</Copyright>
 		<Description>.NET Utilities for Random operations</Description>

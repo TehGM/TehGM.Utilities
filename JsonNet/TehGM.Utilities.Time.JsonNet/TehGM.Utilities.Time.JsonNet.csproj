@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<PackageId>TehGM.Utilities.TimeFormatting</PackageId>
+		<PackageId>TehGM.Utilities.Time.JsonNet</PackageId>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>TehGM.Utilities</RootNamespace>
 		<Version>0.1.0</Version>
 		<Authors>TehGM</Authors>
-		<Product>TehGM's Utilities Library - Time Formatting</Product>
+		<Product>TehGM's Utilities Library - Time - JSON.NET</Product>
 		<RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
 		<Copyright>Copyright (c) 2022 TehGM</Copyright>
-		<Description>.NET Utilities for Time Formatting</Description>
+		<Description>JSON.NET support for .NET Utilities for Time conversion and formatting</Description>
 		<PackageProjectUrl>https://github.com/TehGM/TehGM.Utilities</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
@@ -17,7 +17,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<PackageReadmeFile>NUGET_README.md</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<PropertyGroup>
