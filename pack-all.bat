@@ -15,7 +15,7 @@ echo(
 :: pack each project
 dotnet pack TehGM.Utilities.Time -c Debug -o %outputdir% --no-restore
 echo(
-dotnet pack TehGM.Utilities.Time.JsonNet -c Debug -o %outputdir% --no-restore
+dotnet pack JsonNet/TehGM.Utilities.Time.JsonNet -c Debug -o %outputdir% --no-restore
 echo(
 dotnet pack TehGM.Utilities.Validation -c Debug -o %outputdir% --no-restore
 echo(
