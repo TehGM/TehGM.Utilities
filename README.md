@@ -19,7 +19,7 @@ The library targets [.NET Standard 2.0](https://docs.microsoft.com/en-gb/dotnet/
 ## Included Libraries
 This project currently contains following libraries:
 
-- [TehGM.Utilities.UniqueID](TehGM.Utilities.UniqueID) - includes types and methods for generating unique IDs.
+- [TehGM.Utilities.UniqueIDs](TehGM.Utilities.UniqueIDs) - includes types and methods for generating unique IDs.
 - [TehGM.Utilities.Logging](TehGM.Utilities.Logging) - includes helpers for logging.
 - [TehGM.Utilities.Randomization](TehGM.Utilities.Randomization) - utilities for generating random values.
 - [TehGM.Utilities.Time](TehGM.Utilities.Time) - time conversion and formatting utilities.

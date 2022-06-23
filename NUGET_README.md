@@ -11,7 +11,7 @@ Keep this in mind if upgrading these libraries for any version before `1.0.0`.
 ## Included Libraries
 This NuGet package currently contains following libraries:
 
-- ***TehGM.Utilities.UniqueID*** - includes types and methods for generating unique IDs.
+- ***TehGM.Utilities.UniqueIDs*** - includes types and methods for generating unique IDs.
 - ***TehGM.Utilities.Logging*** - includes helpers for logging.
 - ***TehGM.Utilities.Randomization*** - utilities for generating random values.
 - ***TehGM.Utilities.Time*** - time conversion and formatting utilities.
