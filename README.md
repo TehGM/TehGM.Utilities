@@ -32,6 +32,7 @@ Some of the libraries might have an additional package, which extends their func
 These libraries need to be installed separately. This is because they depend on Newtonsoft.Json package, which might only pollute projects that don't make use of it
 
 - [TehGM.Utilities.Time.JsonNet](JsonNet/TehGM.Utilities.Time.JsonNet) - JSON.NET support for [TehGM.Utilities.Time](TehGM.Utilities.Time).
+- [TehGM.Utilities.UniqueIDs.JsonNet](JsonNet/TehGM.Utilities.UniqueIDs.JsonNet) - JSON.NET support for [TehGM.Utilities.UniqueIDs](TehGM.Utilities.UniqueIDs).
 
 ## Contributing
 In case you want to report a bug or request a new feature, open a new [Issue](https://github.com/TehGM/TehGM.Utilities/issues).

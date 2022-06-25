@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Validation"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.Validation.Tests", "Tests\TehGM.Utilities.Validation.Tests\TehGM.Utilities.Validation.Tests.csproj", "{29F85359-9C55-40DA-B10C-E663AFC8CB09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TehGM.Utilities.UniqueIDs.JsonNet", "JsonNet\TehGM.Utilities.UniqueIDs.JsonNet\TehGM.Utilities.UniqueIDs.JsonNet.csproj", "{8FB41CE5-5C2A-4354-B116-8AEB36B1AF74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{29F85359-9C55-40DA-B10C-E663AFC8CB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29F85359-9C55-40DA-B10C-E663AFC8CB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29F85359-9C55-40DA-B10C-E663AFC8CB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB41CE5-5C2A-4354-B116-8AEB36B1AF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB41CE5-5C2A-4354-B116-8AEB36B1AF74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB41CE5-5C2A-4354-B116-8AEB36B1AF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB41CE5-5C2A-4354-B116-8AEB36B1AF74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +113,7 @@ Global
 		{C1ECB473-F751-4DAD-A2DB-43070076055F} = {040A73CB-9C79-4305-91B4-DFC038F184DE}
 		{6DE53A66-CEDC-447A-8CA6-9E361888B62A} = {730980FD-4811-4DC7-8EC5-D5BA6724C78A}
 		{29F85359-9C55-40DA-B10C-E663AFC8CB09} = {040A73CB-9C79-4305-91B4-DFC038F184DE}
+		{8FB41CE5-5C2A-4354-B116-8AEB36B1AF74} = {730980FD-4811-4DC7-8EC5-D5BA6724C78A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D7A9DC7-DD85-42FA-89BE-99FEFD7C10C4}
