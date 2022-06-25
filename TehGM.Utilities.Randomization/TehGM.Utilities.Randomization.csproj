@@ -18,6 +18,7 @@
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageReleaseNotes>- Added extensions for System.Random.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>
