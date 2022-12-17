@@ -24,6 +24,7 @@ This project currently contains following libraries:
 - [TehGM.Utilities.Randomization](TehGM.Utilities.Randomization) - utilities for generating random values.
 - [TehGM.Utilities.Time](TehGM.Utilities.Time) - time conversion and formatting utilities.
 - [TehGM.Utilities.Validation](TehGM.Utilities.Validation) - type and data validation utilities.
+- [TehGM.Utilities.AspNetCore](TehGM.Utilities.AspNetCore) - general ASP.NET Core utilities.
 
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 
