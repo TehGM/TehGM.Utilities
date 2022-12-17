@@ -16,6 +16,8 @@ This NuGet package currently contains following libraries:
 - ***TehGM.Utilities.Randomization*** - utilities for generating random values.
 - ***TehGM.Utilities.Time*** - time conversion and formatting utilities.
 - ***TehGM.Utilities.Validation*** - type and data validation utilities.
+- ***TehGM.Utilities.Threading*** - threading and async/await utilities.
+- ***TehGM.Utilities.AspNetCore*** - general ASP.NET Core utilities.
 
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 
