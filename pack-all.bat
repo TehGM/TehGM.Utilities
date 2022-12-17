@@ -21,9 +21,15 @@ dotnet pack TehGM.Utilities.Validation -c Debug -o %outputdir% --no-restore
 echo(
 dotnet pack TehGM.Utilities.UniqueIDs -c Debug -o %outputdir% --no-restore
 echo(
+dotnet pack JsonNet/TehGM.Utilities.UniqueIDs.JsonNet -c Debug -o %outputdir% --no-restore
+echo(
 dotnet pack TehGM.Utilities.Randomization -c Debug -o %outputdir% --no-restore
 echo(
 dotnet pack TehGM.Utilities.Logging -c Debug -o %outputdir% --no-restore
+echo(
+dotnet pack TehGM.Utilities.Threading -c Debug -o %outputdir% --no-restore
+echo(
+dotnet pack TehGM.Utilities.AspNetCore -c Debug -o %outputdir% --no-restore
 echo(
 
 :: pack metapackage
