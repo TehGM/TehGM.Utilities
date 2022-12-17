@@ -8,6 +8,10 @@ on:
         description: 'Publish TehGM.Utilities.UniqueIDs (Y/N)?'
         required: true
         default: 'Y'
+      publishUniqueIDsJsonNet:
+        description: 'Publish TehGM.Utilities.UniqueIDs.JsonNet (Y/N)?'
+        required: true
+        default: 'Y'
       publishLogging:
         description: 'Publish TehGM.Utilities.Logging (Y/N)?'
         required: true
@@ -26,6 +30,14 @@ on:
         default: 'Y'
       publishValidation:
         description: 'Publish TehGM.Utilities.Validation (Y/N)?'
+        required: true
+        default: 'Y'
+      publishThreading:
+        description: 'Publish TehGM.Utilities.Threading (Y/N)?'
+        required: true
+        default: 'Y'
+      publishAspNetCore:
+        description: 'Publish TehGM.Utilities.AspNetCore (Y/N)?'
         required: true
         default: 'Y'
       publishMetapackage:
@@ -65,6 +77,13 @@ jobs:
           dotnet pack TehGM.Utilities.UniqueIDs -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
+      - name: Publish TehGM.Utilities.UniqueIDs.JsonNet
+        if: github.event.inputs.publishUniqueIDsJsonNet == 'Y'
+        run: |
+          mkdir __out
+          dotnet pack JsonNet/TehGM.Utilities.UniqueIDs.JsonNet -c Release -o __out --no-restore
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
+          rm -rf __out
       - name: Publish TehGM.Utilities.Logging
         if: github.event.inputs.publishLogging == 'Y'
         run: |
@@ -98,6 +117,20 @@ jobs:
         run: |
           mkdir __out
           dotnet pack TehGM.Utilities.Validation -c Release -o __out --no-restore
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
+          rm -rf __out
+      - name: Publish TehGM.Utilities.Threading
+        if: github.event.inputs.publishThreading == 'Y'
+        run: |
+          mkdir __out
+          dotnet pack TehGM.Utilities.Threading -c Release -o __out --no-restore
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
+          rm -rf __out
+      - name: Publish TehGM.Utilities.AspNetCore
+        if: github.event.inputs.publishAspNetCore == 'Y'
+        run: |
+          mkdir __out
+          dotnet pack TehGM.Utilities.AspNetCore -c Release -o __out --no-restore
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
           rm -rf __out
       - name: Publish TehGM.Utilities metapackage
