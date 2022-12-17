@@ -7,7 +7,7 @@ namespace TehGM.Utilities.Randomization.Tests
     public class RandomizerServiceTests : TestBase
     {
         [Test]
-        [Repeat(10)]
+        [Repeat(5)]
         [Category(nameof(RandomizerService.GetRandomNumber))]
         public void GetRandomNumber_Int32_WithinSpecifiedRange()
         {
@@ -22,7 +22,7 @@ namespace TehGM.Utilities.Randomization.Tests
         }
 
         [Test]
-        [Repeat(10)]
+        [Repeat(5)]
         [Category(nameof(RandomizerService.GetRandomNumber))]
         public void GetRandomNumber_Double_WithinSpecifiedRange()
         {
@@ -57,7 +57,20 @@ namespace TehGM.Utilities.Randomization.Tests
         }
 
         [Test]
-        [Repeat(10)]
+        [Repeat(5)]
+        [Category(nameof(RandomizerExtensions.GetRandomValue))]
+        [AutoNSubstituteData]
+        public void GetRandomValue_ReturnsValueFromCollection(IEnumerable<int> values)
+        {
+            RandomizerService randomizer = new RandomizerService();
+
+            int result = randomizer.GetRandomValue(values);
+
+            result.Should().BeOneOf(values);
+        }
+
+        [Test]
+        [Repeat(5)]
         [Category(nameof(RandomizerExtensions.GetRandomChance))]
         public void GetRandomChance_ShouldReturnBetween0And1()
         {
@@ -67,6 +80,18 @@ namespace TehGM.Utilities.Randomization.Tests
 
             result.Should().BeGreaterThanOrEqualTo(0.0);
             result.Should().BeLessThanOrEqualTo(1.0);
+        }
+
+        [Test]
+        [Repeat(5)]
+        [Category(nameof(RandomizerExtensions.GetRandomEnumValue))]
+        public void GetRandomEnumValue_ReturnsOneOfDefinedValues()
+        {
+            RandomizerService randomizer = new RandomizerService();
+
+            EnumValues result = randomizer.GetRandomEnumValue<EnumValues>();
+
+            result.Should().BeDefined();
         }
 
         [Test]
@@ -144,6 +169,13 @@ namespace TehGM.Utilities.Randomization.Tests
             Action act = () => randomizer.GetRandomString(10, null);
 
             act.Should().Throw<ArgumentException>();
+        }
+
+        private enum EnumValues
+        {
+            Value1 = 1,
+            Value2 = 2,
+            Value1337 = 1337
         }
     }
 }
