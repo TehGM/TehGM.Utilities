@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace TehGM.Utilities.AspNetCore.Routing.Constraints
 {
-    /// <summary>Constrains a route parameter to represent only unsigned 64-bit integer values.</summary>
+    /// <summary>Constrains a route parameter to represent only unsigned 32-bit integer values.</summary>
     public class UintRouteConstraint : IRouteConstraint
     {
         /// <inheritdoc/>
