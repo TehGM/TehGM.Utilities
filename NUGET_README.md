@@ -16,6 +16,8 @@ This NuGet package currently contains following libraries:
 - ***TehGM.Utilities.Randomization*** - utilities for generating random values.
 - ***TehGM.Utilities.Time*** - time conversion and formatting utilities.
 - ***TehGM.Utilities.Validation*** - type and data validation utilities.
+- ***TehGM.Utilities.Threading*** - threading and async/await utilities.
+- ***TehGM.Utilities.AspNetCore*** - general ASP.NET Core utilities.
 
 More libraries might be added as needed, when needed (by me)... or when I feel like it.
 
@@ -24,6 +26,7 @@ Some of the libraries might have an additional package, which extends their func
 These libraries need to be installed separately. This is because they depend on Newtonsoft.Json package, which might only pollute projects that don't make use of it
 
 - ***TehGM.Utilities.Time.JsonNet*** - JSON.NET support for **TehGM.Utilities.Time**.
+- ***TehGM.Utilities.UniqueIDs.JsonNet*** - JSON.NET support for **TehGM.Utilities.UniqueIDs**.
 
 ## Source Repository
 TehGM.Utilities is open source, with code hosted on [GitHub](https://github.com/TehGM/TehGM.Utilities).
