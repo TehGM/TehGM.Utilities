@@ -68,5 +68,82 @@ namespace TehGM.Utilities.Randomization.Tests
             result.Should().BeGreaterThanOrEqualTo(0.0);
             result.Should().BeLessThanOrEqualTo(1.0);
         }
+
+        [Test]
+        [Repeat(5)]
+        [Category(nameof(RandomizerExtensions.GetRandomString))]
+        public void GetRandomString_ReturnsRandomString_WithRequestedLength()
+        {
+            RandomizerService randomizer = new RandomizerService();
+            int length = new Bogus.Randomizer().Number(1, 10);
+
+            string result = randomizer.GetRandomString(length);
+
+            result.Should().NotBeNullOrEmpty();
+            result.Should().HaveLength(length);
+        }
+
+        [Test]
+        [Repeat(5)]
+        [Category(nameof(RandomizerExtensions.GetRandomString))]
+        public void GetRandomString_WithRequestedZeroLength_ReturnsEmptyString()
+        {
+            RandomizerService randomizer = new RandomizerService();
+
+            string result = randomizer.GetRandomString(0);
+
+            result.Should().NotBeNull();
+            result.Should().BeEmpty();
+        }
+
+        [Test]
+        [Repeat(5)]
+        [TestCase("ab")]
+        [TestCase("aB3")]
+        [Category(nameof(RandomizerExtensions.GetRandomString))]
+        public void GetRandomString_ReturnsRandomString_UsingCharsetCharacters(string charset)
+        {
+            RandomizerService randomizer = new RandomizerService();
+
+            string result = randomizer.GetRandomString(10, charset);
+
+            result.Should().NotBeNullOrEmpty();
+            result.AsEnumerable().Should().OnlyContain(c => charset.Contains(c));
+        }
+
+        [Test]
+        [TestCase(-1)]
+        [TestCase(int.MinValue)]
+        [Category(nameof(RandomizerExtensions.GetRandomString))]
+        public void GetRandomString_WithInvalidLength_ShouldThrow(int length)
+        {
+            RandomizerService randomizer = new RandomizerService();
+
+            Action act = () => randomizer.GetRandomString(length);
+
+            act.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        [Category(nameof(RandomizerExtensions.GetRandomString))]
+        public void GetRandomString_WithNullCharset_ShouldThrow()
+        {
+            RandomizerService randomizer = new RandomizerService();
+
+            Action act = () => randomizer.GetRandomString(10, null);
+
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        [Category(nameof(RandomizerExtensions.GetRandomString))]
+        public void GetRandomString_WithEmptyCharset_ShouldThrow()
+        {
+            RandomizerService randomizer = new RandomizerService();
+
+            Action act = () => randomizer.GetRandomString(10, null);
+
+            act.Should().Throw<ArgumentException>();
+        }
     }
 }

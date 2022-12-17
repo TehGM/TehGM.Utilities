@@ -57,6 +57,32 @@ namespace TehGM.Utilities.Randomization
             return random.GetRandomValue(values);
         }
 
+        /// <summary>Builds a random string of given length using specified characters.</summary>
+        /// <param name="random"><see cref="Random"/> instance to use to generate the string.</param>
+        /// <param name="length">Length of the randomly generated string.</param>
+        /// <param name="charset">Set of characters to use when generating the string.</param>
+        /// <returns>A randomy generated string.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Requested length is invalid.</exception>
+        /// <exception cref="ArgumentNullException">Random instance or charset are null.</exception>
+        /// <exception cref="ArgumentException">Charset is empty.</exception>
+        public static string GetRandomString(this Random random, int length, string charset = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890")
+        {
+            if (length < 0)
+                throw new ArgumentOutOfRangeException(nameof(length), length, "Random string length cannot be less than 0.");
+            if (charset == null)
+                throw new ArgumentNullException(nameof(charset));
+            if (charset.Length == 0)
+                throw new ArgumentException("Charset cannot be empty.", nameof(charset));
+            if (length == 0)
+                return string.Empty;
+
+            char[] chars = new char[length];
+            for (int i = 0; i < length; i++)
+                chars[i] = charset[random.Next(0, charset.Length)];
+
+            return new string(chars);
+        }
+
         private static void ThrowIfNullOrEmpty<T>(IEnumerable<T> values)
         {
             if (values == null)
