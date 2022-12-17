@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TehGM.Utilities.UniqueIDs.J
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TehGM.Utilities.AspNetCore", "TehGM.Utilities.AspNetCore\TehGM.Utilities.AspNetCore.csproj", "{7A94AAE9-CDCF-4037-879C-6F147D9B1987}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TehGM.Utilities.Threading", "TehGM.Utilities.Threading\TehGM.Utilities.Threading.csproj", "{B99F2E18-6609-4E5E-9F60-3AB71E6951E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,10 @@ Global
 		{7A94AAE9-CDCF-4037-879C-6F147D9B1987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A94AAE9-CDCF-4037-879C-6F147D9B1987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A94AAE9-CDCF-4037-879C-6F147D9B1987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B99F2E18-6609-4E5E-9F60-3AB71E6951E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B99F2E18-6609-4E5E-9F60-3AB71E6951E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B99F2E18-6609-4E5E-9F60-3AB71E6951E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B99F2E18-6609-4E5E-9F60-3AB71E6951E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>TehGM.Utilities.Threading</PackageId>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>TehGM.Utilities</RootNamespace>
+		<Version>0.2.0</Version>
+		<Authors>TehGM</Authors>
+		<Product>TehGM's Utilities Library - Threading</Product>
+		<RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
+		<Copyright>Copyright (c) 2022 TehGM</Copyright>
+		<Description>.NET Utilities for Threading</Description>
+		<PackageProjectUrl>https://github.com/TehGM/TehGM.Utilities</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<AssemblyVersion>0.2.0.0</AssemblyVersion>
+		<FileVersion>0.2.0.0</FileVersion>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryType>git</RepositoryType>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="README.md">
+			<PackagePath>\</PackagePath>
+			<Pack>True</Pack>
+		</None>
+	</ItemGroup>
+
+</Project>
