@@ -52,6 +52,20 @@ namespace TehGM.Utilities.UniqueIDs.Tests
         }
 
         [Test]
+        [TestCase("   fWdQp6v36EOjBsT1a18b2Q", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
+        [TestCase("8KVZQg08_0CJjrEnGNEixw   ", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
+        [TestCase("    2T-cNnAURUOUmp0yCznKLg    ", "369c3fd9-1470-4345-949a-9d320b39ca2e")]
+        [Category(TestCategoryName.Constructor)]
+        public void Constructor_FromStringWithWhitespaces_ReturnsCorrectGuid(string stringRepresentation, string expectedResultString)
+        {
+            Guid expectedResult = Guid.Parse(expectedResultString);
+
+            Base64Guid result = new Base64Guid(stringRepresentation);
+
+            result.Value.Should().Be(expectedResult);
+        }
+
+        [Test]
         [TestCase("fWdQp6v36EOjBsT1a18b2Q==", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
         [TestCase("8KVZQg08/0CJjrEnGNEixw==", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
         [TestCase("2T+cNnAURUOUmp0yCznKLg==", "369c3fd9-1470-4345-949a-9d320b39ca2e")]
@@ -159,6 +173,212 @@ namespace TehGM.Utilities.UniqueIDs.Tests
 
             result.Should().Be(expectedResult);
         }
+
+        #region Parse
+        [Test]
+        [TestCase("fWdQp6v36EOjBsT1a18b2Q", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
+        [TestCase("8KVZQg08_0CJjrEnGNEixw", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
+        [TestCase("2T-cNnAURUOUmp0yCznKLg", "369c3fd9-1470-4345-949a-9d320b39ca2e")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_ReturnsCorrectGuid(string stringRepresentation, string expectedResultString)
+        {
+            Guid expectedResult = Guid.Parse(expectedResultString);
+
+            Base64Guid result = Base64Guid.Parse(stringRepresentation);
+
+            result.Value.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [TestCase("   fWdQp6v36EOjBsT1a18b2Q", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
+        [TestCase("8KVZQg08_0CJjrEnGNEixw   ", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
+        [TestCase("    2T-cNnAURUOUmp0yCznKLg    ", "369c3fd9-1470-4345-949a-9d320b39ca2e")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_FromStringWithWhitespaces_ReturnsCorrectGuid(string stringRepresentation, string expectedResultString)
+        {
+            Guid expectedResult = Guid.Parse(expectedResultString);
+
+            Base64Guid result = Base64Guid.Parse(stringRepresentation);
+
+            result.Value.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [Repeat(3)]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_FromStringGuid_ReturnsCorrectGuid()
+        {
+            Guid expectedResult = Guid.NewGuid();
+            string guidString = expectedResult.ToString();
+
+            Base64Guid result = Base64Guid.Parse(guidString);
+
+            result.Value.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_FromString_Null_ShouldThrow()
+        {
+            string value = null;
+
+            Action act = () => Base64Guid.Parse(value);
+
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_FromString_Empty_ShouldThrow()
+        {
+            string value = string.Empty;
+
+            Action act = () => Base64Guid.Parse(value);
+
+            act.Should().Throw<FormatException>();
+        }
+
+        [Test]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_FromString_Whitespace_ShouldThrow()
+        {
+            string value = string.Concat(Enumerable.Repeat(' ', 22));
+
+            Action act = () => Base64Guid.Parse(value);
+
+            act.Should().Throw<FormatException>();
+        }
+
+        [Test]
+        [TestCase("2T'cNnAURUOUmp0yCznKLg")]
+        [TestCase("2T;cNnAURUOUmp0yCznKLg")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_FromString_InvalidCharacters_ShouldThrow(string input)
+        {
+            Action act = () => Base64Guid.Parse(input);
+
+            act.Should().Throw<FormatException>();
+        }
+
+        [Test]
+        [TestCase("a750677d-f7'b-43e8-a306-c4f56b5f1bd9")]
+        [TestCase("4259a5f0-3c;d-40ff-898e-b12718d122c7")]
+        [TestCase("369c3fd9-1470-4345-949a-9d320.39ca2e")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void Parse_FromStringGuid_InvalidCharacters_ShouldThrow(string input)
+        {
+            Action act = () => Base64Guid.Parse(input);
+
+            act.Should().Throw<FormatException>();
+        }
+        #endregion
+
+        #region TryParse
+        [Test]
+        [TestCase("fWdQp6v36EOjBsT1a18b2Q", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
+        [TestCase("8KVZQg08_0CJjrEnGNEixw", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
+        [TestCase("2T-cNnAURUOUmp0yCznKLg", "369c3fd9-1470-4345-949a-9d320b39ca2e")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_ReturnsTrueAndCorrectGuid(string stringRepresentation, string expectedResultString)
+        {
+            Guid expectedResult = Guid.Parse(expectedResultString);
+
+            bool result = Base64Guid.TryParse(stringRepresentation, out Base64Guid resultGuid);
+
+            result.Should().BeTrue();
+            resultGuid.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [TestCase("   fWdQp6v36EOjBsT1a18b2Q", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
+        [TestCase("8KVZQg08_0CJjrEnGNEixw   ", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
+        [TestCase("    2T-cNnAURUOUmp0yCznKLg    ", "369c3fd9-1470-4345-949a-9d320b39ca2e")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_FromStringWithWhitespaces_ReturnsTrueAndCorrectGuid(string stringRepresentation, string expectedResultString)
+        {
+            Guid expectedResult = Guid.Parse(expectedResultString);
+
+            bool result = Base64Guid.TryParse(stringRepresentation, out Base64Guid resultGuid);
+
+            result.Should().BeTrue();
+            resultGuid.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [Repeat(3)]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_FromStringGuid_ReturnsTrueAndCorrectGuid()
+        {
+            Guid expectedResult = Guid.NewGuid();
+            string guidString = expectedResult.ToString();
+
+            bool result = Base64Guid.TryParse(guidString, out Base64Guid resultGuid);
+
+            result.Should().BeTrue();
+            resultGuid.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_FromString_Null_ReturnsFalseAndDefaultGuid()
+        {
+            string value = null;
+
+            bool result = Base64Guid.TryParse(value, out Base64Guid resultGuid);
+
+            result.Should().BeFalse();
+            resultGuid.Should().Be(default(Base64Guid));
+        }
+
+        [Test]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_FromString_Empty_ReturnsFalseAndDefaultGuid()
+        {
+            string value = string.Empty;
+
+            bool result = Base64Guid.TryParse(value, out Base64Guid resultGuid);
+
+            result.Should().BeFalse();
+            resultGuid.Should().Be(default(Base64Guid));
+        }
+
+        [Test]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_FromString_Whitespace_ReturnsFalseAndDefaultGuid()
+        {
+            string value = string.Concat(Enumerable.Repeat(' ', 22));
+
+            bool result = Base64Guid.TryParse(value, out Base64Guid resultGuid);
+
+            result.Should().BeFalse();
+            resultGuid.Should().Be(default(Base64Guid));
+        }
+
+        [Test]
+        [TestCase("2T'cNnAURUOUmp0yCznKLg")]
+        [TestCase("2T;cNnAURUOUmp0yCznKLg")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_FromString_InvalidCharacters_ReturnsFalseAndDefaultGuid(string input)
+        {
+            bool result = Base64Guid.TryParse(input, out Base64Guid resultGuid);
+
+            result.Should().BeFalse();
+            resultGuid.Should().Be(default(Base64Guid));
+        }
+
+        [Test]
+        [TestCase("a750677d-f7'b-43e8-a306-c4f56b5f1bd9")]
+        [TestCase("4259a5f0-3c;d-40ff-898e-b12718d122c7")]
+        [TestCase("369c3fd9-1470-4345-949a-9d320.39ca2e")]
+        [Category(nameof(Base64Guid.Parse))]
+        public void TryParse_FromStringGuid_InvalidCharacters_ReturnsFalseAndDefaultGuid(string input)
+        {
+            bool result = Base64Guid.TryParse(input, out Base64Guid resultGuid);
+
+            result.Should().BeFalse();
+            resultGuid.Should().Be(default(Base64Guid));
+        }
+        #endregion
 
         [Test]
         [Repeat(3)]
