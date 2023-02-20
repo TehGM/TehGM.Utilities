@@ -11,14 +11,14 @@ namespace TehGM.Utilities
         /// <summary>The actual GUID value.</summary>
         public Guid Value { get; }
 
-        /// <summary>Wraps GUID into a new DisplayGuid.</summary>
+        /// <summary>Wraps GUID into a new Base64Guid.</summary>
         /// <param name="value">Actual GUID value.</param>
         public Base64Guid(Guid value)
         {
             this.Value = value;
         }
 
-        /// <summary>Creates a DisplayGuid from a display value.</summary>
+        /// <summary>Creates a Base64Guid from a display value.</summary>
         /// <param name="value">Display value of the GUID.</param>
         /// <exception cref="ArgumentNullException">Given value is null.</exception>
         /// <exception cref="FormatException">Given value is in invalid format.</exception>
@@ -27,7 +27,8 @@ namespace TehGM.Utilities
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
-            if (value.Length != _packedLength && value.Length != _unpackedLength)
+            value = value.Trim();
+            if (!IsLengthValid(value))
                 throw new FormatException("A valid DisplayGuid string is either 22 or 24 characters long");
 
             value = this.Unpack(value);
@@ -35,7 +36,7 @@ namespace TehGM.Utilities
             this.Value = new Guid(valueBytes);
         }
 
-        /// <summary>Generates a new GUID wrapped into a DisplayGuid.</summary>
+        /// <summary>Generates a new GUID wrapped into a Base64Guid.</summary>
         /// <returns>A new display guid.</returns>
         public static Base64Guid GenerateNew()
             => new Base64Guid(Guid.NewGuid());
@@ -61,6 +62,51 @@ namespace TehGM.Utilities
 
             return value;
         }
+
+        /// <summary>Converts the string representation of a Guid or Base64Guid to a Base64Guid instance.</summary>
+        /// <param name="value">String representation of a Guid or Base64Guid.</param>
+        /// <exception cref="ArgumentNullException">Given value is null.</exception>
+        /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        /// <returns>The parsed</returns>
+        public static Base64Guid Parse(string value)
+        {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
+
+            value = value.Trim();
+            if (Guid.TryParse(value, out Guid result))
+                return result;
+
+            return new Base64Guid(value);
+        }
+
+        /// <summary>Attempts to convert the string representation of a Guid or Base64Guid to a Base64Guid instance.</summary>
+        /// <param name="value">String representation of a Guid or Base64Guid.</param>
+        /// <param name="result">Display value of the GUID.</param>
+        public static bool TryParse(string value, out Base64Guid result)
+        {
+            value = value?.Trim();
+            if (Guid.TryParse(value, out Guid guidResult))
+            {
+                result = guidResult;
+                return true;
+            }
+
+            if (!IsLengthValid(value))
+                return false;
+            try
+            {
+                result = Parse(value);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static bool IsLengthValid(string value)
+            => value != null && (value.Length == _packedLength || value.Length == _unpackedLength);
 
         /// <inheritdoc/>
         public override string ToString()
