@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using TehGM.Utilities.ComponentModel;
 
 namespace TehGM.Utilities
@@ -7,6 +8,9 @@ namespace TehGM.Utilities
     /// <summary>A wrapper for <see cref="Guid"/> that allows displaying value in a 22 character URL-friendly string. Collission of this Unique ID is very unlikely.</summary>
     [TypeConverter(typeof(Base64GuidConverter))]
     public struct Base64Guid : IEquatable<Base64Guid>, IEquatable<Guid>, IEquatable<string>
+#if NET7_0_OR_GREATER
+        , IParsable<Base64Guid>, ISpanParsable<Base64Guid>
+#endif
     {
         private const int _packedLength = 22;
         private const int _unpackedLength = 24;
@@ -70,33 +74,102 @@ namespace TehGM.Utilities
         /// <param name="value">String representation of a Guid or Base64Guid.</param>
         /// <exception cref="ArgumentNullException">Given value is null.</exception>
         /// <exception cref="FormatException">Given value is in invalid format.</exception>
-        /// <returns>The parsed</returns>
+        /// <returns>The parsed Base64Guid value.</returns>
         public static Base64Guid Parse(string value)
+            => Parse(value, null);
+
+        /// <summary>Converts the string representation of a Guid or Base64Guid to a Base64Guid instance.</summary>
+        /// <param name="value">String representation of a Guid or Base64Guid.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <exception cref="ArgumentNullException">Given value is null.</exception>
+        /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        /// <returns>The parsed Base64Guid value.</returns>
+        public static Base64Guid Parse(string value, IFormatProvider provider)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
             value = value.Trim();
-            if (Guid.TryParse(value, out Guid result))
-                return result;
+#if NET7_0_OR_GREATER
+            if (Guid.TryParse(value, provider, out Guid guidResult))
+#else
+            if (Guid.TryParse(value, out Guid guidResult))
+#endif
+                return guidResult;
 
-            return new Base64Guid(value);
+            return ParseDirect(value, provider);
         }
+        
+#if NET7_0_OR_GREATER
+        /// <summary>Converts the string representation of a Guid or Base64Guid to a Base64Guid instance.</summary>
+        /// <param name="value">The span of characters to parse.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <exception cref="ArgumentNullException">Given value is null.</exception>
+        /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        /// <returns>The parsed Base64Guid value.</returns>
+        public static Base64Guid Parse(ReadOnlySpan<char> value, IFormatProvider provider)
+        {
+            value = value.Trim();
+            if (Guid.TryParse(value, provider, out Guid guidResult))
+                return guidResult;
+
+            return Parse(value.ToString(), provider);
+    }
+#endif
+
+        private static Base64Guid ParseDirect(string value, IFormatProvider provider)
+            => new Base64Guid(value);
 
         /// <summary>Attempts to convert the string representation of a Guid or Base64Guid to a Base64Guid instance.</summary>
         /// <param name="value">String representation of a Guid or Base64Guid.</param>
         /// <param name="result">Display value of the GUID.</param>
         public static bool TryParse(string value, out Base64Guid result)
+            => TryParse(value, null, out result);
+
+        /// <summary>Attempts to convert the string representation of a Guid or Base64Guid to a Base64Guid instance.</summary>
+        /// <param name="value">String representation of a Guid or Base64Guid.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <param name="result">Display value of the GUID.</param>
+        public static bool TryParse(string value, IFormatProvider provider, out Base64Guid result)
         {
-            value = value?.Trim();
+#if NET7_0_OR_GREATER
+            if (Guid.TryParse(value, provider, out Guid guidResult))
+#else
             if (Guid.TryParse(value, out Guid guidResult))
+#endif
             {
                 result = guidResult;
                 return true;
             }
 
+            return TryParseDirect(value, out result);
+        }
+
+#if NET7_0_OR_GREATER
+        /// <summary>Attempts to convert the string representation of a Guid or Base64Guid to a Base64Guid instance.</summary>
+        /// <param name="value">The span of characters to parse.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <param name="result">Display value of the GUID.</param>
+        public static bool TryParse(ReadOnlySpan<char> value, IFormatProvider provider, [MaybeNullWhen(false)] out Base64Guid result)
+        {
+            if (Guid.TryParse(value, provider, out Guid guidResult))
+            {
+                result = guidResult;
+                return true;
+            }
+
+            return TryParseDirect(value.ToString(), out result);
+        }
+#endif
+
+        private static bool TryParseDirect(string value, out Base64Guid result)
+        {
+            value = value?.Trim();
             if (!IsLengthValid(value))
+            {
+                result = default;
                 return false;
+            }
             try
             {
                 result = Parse(value);
@@ -104,6 +177,7 @@ namespace TehGM.Utilities
             }
             catch
             {
+                result = default;
                 return false;
             }
         }
