@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>TehGM.Utilities</id>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
     <title>TehGM's C# Utilities</title>
     <authors>TehGM</authors>
     <owners>TehGM</owners>
@@ -18,10 +18,10 @@
 	</releaseNotes>
     <dependencies>
       <group>
-        <dependency id="TehGM.Utilities.UniqueID" version="0.2.1" />
+        <dependency id="TehGM.Utilities.UniqueID" version="0.2.2" />
         <dependency id="TehGM.Utilities.Logging" version="0.1.0" />
         <dependency id="TehGM.Utilities.Randomization" version="0.2.0" />
-        <dependency id="TehGM.Utilities.Time" version="0.1.0" />
+        <dependency id="TehGM.Utilities.Time" version="0.2.2" />
         <dependency id="TehGM.Utilities.Validation" version="0.1.0" />
         <dependency id="TehGM.Utilities.Threading" version="0.2.0" />
       </group>
