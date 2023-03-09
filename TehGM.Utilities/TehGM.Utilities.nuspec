@@ -18,12 +18,13 @@
 - UniqueIDs: Implement IParsable and ISpanParsable for Base64Guid (.NET7+).
 - Time: Add TypeConverter for UnixTimestamp.
 - Time: Implement IParsable and ISpanParsable for UnixTimestamp (.NET7+).
+- Randomization: Fix multi-targetting compilation for .NET6+.
 	</releaseNotes>
     <dependencies>
       <group>
         <dependency id="TehGM.Utilities.UniqueID" version="0.2.2" />
         <dependency id="TehGM.Utilities.Logging" version="0.1.0" />
-        <dependency id="TehGM.Utilities.Randomization" version="0.2.0" />
+        <dependency id="TehGM.Utilities.Randomization" version="0.2.2" />
         <dependency id="TehGM.Utilities.Time" version="0.2.2" />
         <dependency id="TehGM.Utilities.Validation" version="0.1.0" />
         <dependency id="TehGM.Utilities.Threading" version="0.2.0" />
