@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using TehGM.Utilities.ComponentModel;
 
 namespace TehGM.Utilities
 {
     /// <summary>Represents an unix timestamp (seconds only).</summary>
     [DebuggerDisplay("{Value,nq}")]
+    [TypeConverter(typeof(UnixTimestampConverter))]
     public struct UnixTimestamp : IEquatable<UnixTimestamp>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, 
         IComparable<UnixTimestamp>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<long>, IConvertible
 #if NET7_0_OR_GREATER
