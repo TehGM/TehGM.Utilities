@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<PackageId>TehGM.Utilities.UniqueIDs.JsonNet</PackageId>
@@ -30,8 +30,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="README.md">
-			<PackagePath>\</PackagePath>
+		<None Include="..\README.md">
+			<PackagePath></PackagePath>
 			<Pack>True</Pack>
 		</None>
 	</ItemGroup>
