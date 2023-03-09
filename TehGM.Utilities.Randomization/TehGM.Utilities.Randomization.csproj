@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	
 	<PropertyGroup>
 		<PackageId>TehGM.Utilities.Randomization</PackageId>
@@ -26,9 +26,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="README.md">
+		<None Include="..\README.md">
 			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
+			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
 
