@@ -1,8 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
+using TehGM.Utilities.ComponentModel;
 
 namespace TehGM.Utilities
 {
     /// <summary>A wrapper for <see cref="Guid"/> that allows displaying value in a 22 character URL-friendly string. Collission of this Unique ID is very unlikely.</summary>
+    [TypeConverter(typeof(Base64GuidConverter))]
     public struct Base64Guid : IEquatable<Base64Guid>, IEquatable<Guid>, IEquatable<string>
     {
         private const int _packedLength = 22;
