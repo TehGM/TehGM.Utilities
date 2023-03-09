@@ -57,7 +57,7 @@ namespace TehGM.Utilities.Randomization
             Type t = typeof(T);
             if (!t.IsEnum)
                 throw new InvalidOperationException($"{nameof(GetRandomEnumValue)} can only be used on enums. {t.Name} is not an enum");
-#if NET5_0
+#if NET5_0_OR_GREATER
             T[] values = Enum.GetValues<T>();
 #else
             IEnumerable<T> values = Enum.GetValues(t).Cast<T>();
