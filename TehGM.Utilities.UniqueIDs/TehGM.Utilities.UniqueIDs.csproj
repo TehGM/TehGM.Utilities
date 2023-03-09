@@ -2,9 +2,9 @@
 
   <PropertyGroup>
 	  <PackageId>TehGM.Utilities.UniqueIDs</PackageId>
-	  <TargetFramework>netstandard2.0</TargetFramework>
+	  <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
 	  <RootNamespace>TehGM.Utilities</RootNamespace>
-	  <Version>0.2.1</Version>
+	  <Version>0.2.2</Version>
 	  <Authors>TehGM</Authors>
 	  <Product>TehGM's Utilities Library - Unique IDs</Product>
 	  <RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
@@ -18,7 +18,10 @@
 	  <RepositoryType>git</RepositoryType>
 	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
-	  <PackageReleaseNotes>- Added Parse and TryParse methods for Base64Guid.</PackageReleaseNotes>
+	  <PackageReleaseNotes>
+- Added TypeConverter for Base64Guid.
+- Implement IParsable and ISpanParsable in Base64Guid (.NET7+).
+	  </PackageReleaseNotes>
   </PropertyGroup>
 
 	<PropertyGroup>

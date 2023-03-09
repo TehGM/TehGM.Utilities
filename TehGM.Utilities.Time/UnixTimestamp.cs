@@ -1,12 +1,19 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using TehGM.Utilities.ComponentModel;
 
 namespace TehGM.Utilities
 {
     /// <summary>Represents an unix timestamp (seconds only).</summary>
     [DebuggerDisplay("{Value,nq}")]
+    [TypeConverter(typeof(UnixTimestampConverter))]
     public struct UnixTimestamp : IEquatable<UnixTimestamp>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, 
         IComparable<UnixTimestamp>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<long>, IConvertible
+#if NET7_0_OR_GREATER
+        , IParsable<UnixTimestamp>, ISpanParsable<UnixTimestamp>
+#endif
     {
         /// <summary>DateTime value of Unix Epoch.</summary>
         public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
@@ -48,6 +55,92 @@ namespace TehGM.Utilities
                 return this.Equals(value);
             return false;
         }
+
+        /// <summary>Converts the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <param name="value">String representation of UnixTimestamp.</param>
+        /// <exception cref="ArgumentNullException">Given value is null.</exception>
+        /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        /// <returns>Parsed UnixTimestamp value.</returns>
+        public static UnixTimestamp Parse(string value)
+            => Parse(value, null);
+
+        /// <summary>Converts the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <param name="value">String representation of UnixTimestamp.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <exception cref="ArgumentNullException">Given value is null.</exception>
+        /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        /// <returns>Parsed UnixTimestamp value.</returns>
+        public static UnixTimestamp Parse(string value, IFormatProvider provider)
+        {
+            long numberValue = long.Parse(value, provider);
+            return new UnixTimestamp(numberValue);
+        }
+
+#if NET7_0_OR_GREATER
+        /// <summary>Converts the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <param name="value">The span of characters to parse.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <exception cref="ArgumentNullException">Given value is null.</exception>
+        /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        /// <returns>Parsed UnixTimestamp value.</returns>
+        public static UnixTimestamp Parse(ReadOnlySpan<char> value, IFormatProvider provider)
+        {
+            long numberValue = long.Parse(value, provider);
+            return new UnixTimestamp(numberValue);
+        }
+#endif
+
+        /// <summary>Attempts to convert the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <param name="value">String representation of UnixTimestamp.</param>
+        /// <param name="result">Parsed UnixTimestamp value.</param>
+        public static bool TryParse(string value, out UnixTimestamp result)
+        {
+            if (long.TryParse(value, out long numberValue))
+            {
+                result = new UnixTimestamp(numberValue);
+                return true;
+            }
+            result = default;
+            return false;
+        }
+
+        /// <summary>Attempts to convert the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <param name="value">String representation of UnixTimestamp.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <param name="result">Parsed UnixTimestamp value.</param>
+        public static bool TryParse(string value, IFormatProvider provider, out UnixTimestamp result)
+        {
+
+#if NET7_0_OR_GREATER
+            if (long.TryParse(value, provider, out long numberValue))
+#else
+
+            if (long.TryParse(value, System.Globalization.NumberStyles.Integer, provider, out long numberValue))
+#endif
+            {
+                result = new UnixTimestamp(numberValue);
+                return true;
+            }
+            result = default;
+            return false;
+        }
+
+#if NET7_0_OR_GREATER
+        /// <summary>Attempts to convert the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <param name="value">The span of characters to parse.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
+        /// <param name="result">Parsed UnixTimestamp value.</param>
+        public static bool TryParse(ReadOnlySpan<char> value, IFormatProvider provider, [MaybeNullWhen(false)] out UnixTimestamp result)
+        {
+            if (long.TryParse(value, provider, out long numberValue))
+            {
+                result = new UnixTimestamp(numberValue);
+                return true;
+            }
+            result = default;
+            return false;
+        }
+#endif
 
         /// <inheritdoc/>
         public bool Equals(UnixTimestamp other)
@@ -106,7 +199,7 @@ namespace TehGM.Utilities
         public override string ToString()
             => this.Value.ToString();
 
-        #region IComparable
+#region IComparable
         /// <inheritdoc/>
         public int CompareTo(long other)
             => this.Value.CompareTo(other);
@@ -122,9 +215,9 @@ namespace TehGM.Utilities
         /// <inheritdoc/>
         public int CompareTo(DateTimeOffset other)
             => this.ToDateTimeOffset().CompareTo(other);
-        #endregion
+#endregion
 
-        #region IConvertible
+#region IConvertible
         /// <inheritdoc/>
         TypeCode IConvertible.GetTypeCode()
             => TypeCode.Int64;
@@ -181,6 +274,6 @@ namespace TehGM.Utilities
                 return this;
             return Convert.ChangeType(this.Value, conversionType);
         }
-        #endregion
+#endregion
     }
 }
