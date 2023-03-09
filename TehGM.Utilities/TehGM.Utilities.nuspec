@@ -14,7 +14,10 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <copyright>Copyright (c) 2022 TehGM</copyright>
     <releaseNotes>
-- UniqueIDs: Add Parse and TryParse methods for Base64Guid.
+- UniqueIDs: Add TypeConverter for Base64Guid.
+- UniqueIDs: Implement IParsable and ISpanParsable for Base64Guid (.NET7+).
+- Time: Add TypeConverter for UnixTimestamp.
+- Time: Implement IParsable and ISpanParsable for UnixTimestamp (.NET7+).
 	</releaseNotes>
     <dependencies>
       <group>
