@@ -29,8 +29,8 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-	  <None Update="README.md">
-	    <PackagePath>\</PackagePath>
+	  <None Update="..\README.md">
+	    <PackagePath></PackagePath>
 	    <Pack>True</Pack>
 	  </None>
 	</ItemGroup>

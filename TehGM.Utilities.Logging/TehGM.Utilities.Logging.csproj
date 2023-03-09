@@ -29,9 +29,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="README.md">
+		<None Update="..\README.md">
 			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
+			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
 
