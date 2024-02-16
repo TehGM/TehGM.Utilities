@@ -4,7 +4,7 @@
 	  <PackageId>TehGM.Utilities.UniqueIDs</PackageId>
 	  <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
 	  <RootNamespace>TehGM.Utilities</RootNamespace>
-	  <Version>0.2.2</Version>
+	  <Version>0.2.3</Version>
 	  <Authors>TehGM</Authors>
 	  <Product>TehGM's Utilities Library - Unique IDs</Product>
 	  <RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
@@ -19,8 +19,9 @@
 	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageReleaseNotes>
-- Added TypeConverter for Base64Guid.
-- Implement IParsable and ISpanParsable in Base64Guid (.NET7+).
+- Base64Guid constructor accepting string is now obsolete. Use Parse method instead.
+- Reduce heap allocations and improve performance of Base64Guid on .NET7+.
+- Fix wrong type named used in some of Base64Guid exception messages.
 	  </PackageReleaseNotes>
   </PropertyGroup>
 

@@ -4,7 +4,7 @@
 		<PackageId>TehGM.Utilities.Randomization</PackageId>
 		<TargetFrameworks>netstandard2.0;net5.0;net6.0;net7.0</TargetFrameworks>
 		<RootNamespace>TehGM.Utilities</RootNamespace>
-		<Version>0.2.2</Version>
+		<Version>0.2.3</Version>
 		<Authors>TehGM</Authors>
 		<Product>TehGM's Utilities Library - Randomization</Product>
 		<RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
@@ -18,7 +18,10 @@
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>- Fix multi-targetting compilation for .NET6+.</PackageReleaseNotes>
+		<PackageReleaseNotes>
+- Add support for long and float-based random number generation (.NET 6+).
+- Minor performance and heap allocation optimization for random string on .NET 7+.
+		</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>
