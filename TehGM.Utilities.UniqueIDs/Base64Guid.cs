@@ -71,7 +71,7 @@ namespace TehGM.Utilities
 #else
 
             if (!IsLengthValid(value.Length))
-                throw new FormatException("A valid DisplayGuid string is either 22 or 24 characters long");
+                throw new FormatException("A valid Base64Guid string is either 22 or 24 characters long");
             if (value.Length == _trimmedLength)
                 value += "==";
 
@@ -90,7 +90,7 @@ namespace TehGM.Utilities
         private static Guid ConvertStringToGuid(ReadOnlySpan<char> value)
         {
             if (!IsLengthValid(value.Length))
-                throw new FormatException("A valid DisplayGuid string is either 22 or 24 characters long");
+                throw new FormatException("A valid Base64Guid string is either 22 or 24 characters long");
 
             Span<char> result = stackalloc char[24];
 
