@@ -47,18 +47,6 @@ namespace TehGM.Utilities
             this._value = ConvertStringToGuid(value);
         }
 
-#if NET7_0_OR_GREATER
-        /// <summary>Creates a Base64Guid from a display value.</summary>
-        /// <param name="value">Display value of the GUID.</param>
-        /// <exception cref="ArgumentNullException">Given value is null.</exception>
-        /// <exception cref="FormatException">Given value is in invalid format.</exception>
-        [Obsolete("Use Parse method instead.")]
-        public Base64Guid(ReadOnlySpan<char> value)
-        {
-            this._value = ConvertStringToGuid(value);
-        }
-#endif
-
         /// <summary>Generates a new GUID wrapped into a Base64Guid.</summary>
         /// <returns>A new display guid.</returns>
         public static Base64Guid GenerateNew()
