@@ -84,7 +84,11 @@ namespace TehGM.Utilities.Randomization
             if (length == 0)
                 return string.Empty;
 
+#if NET7_0_OR_GREATER
+            Span<char> chars = stackalloc char[length];
+#else
             char[] chars = new char[length];
+#endif
             for (int i = 0; i < length; i++)
                 chars[i] = charset[randomizer.GetRandomNumber(0, charset.Length, false)];
 
