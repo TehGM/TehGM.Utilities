@@ -257,7 +257,7 @@ namespace TehGM.Utilities.UniqueIDs.Tests
         {
             Action act = () => Base64Guid.Parse(input);
 
-            act.Should().Throw<FormatException>();
+            var ex = act.Should().Throw<FormatException>();
         }
 
         [Test]
