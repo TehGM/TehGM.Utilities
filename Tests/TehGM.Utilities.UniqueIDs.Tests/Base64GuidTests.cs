@@ -37,6 +37,7 @@ namespace TehGM.Utilities.UniqueIDs.Tests
             result.Value.Should().Be(guid);
         }
 
+#pragma warning disable CS0618 // Type or member is obsolete
         [Test]
         [TestCase("fWdQp6v36EOjBsT1a18b2Q", "a750677d-f7ab-43e8-a306-c4f56b5f1bd9")]
         [TestCase("8KVZQg08_0CJjrEnGNEixw", "4259a5f0-3c0d-40ff-898e-b12718d122c7")]
@@ -144,6 +145,7 @@ namespace TehGM.Utilities.UniqueIDs.Tests
 
             act.Should().Throw<FormatException>();
         }
+#pragma warning restore CS0618 // Type or member is obsolete
 
         [Test]
         [Repeat(3)]
