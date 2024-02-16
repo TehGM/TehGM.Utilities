@@ -62,6 +62,8 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
       - name: Exclude test projects
         run: dotnet sln remove Tests/**
+      - name: Exclude benchmark projects
+        run: dotnet sln remove Benchmarks/**
       - name: Install dependencies
         run: dotnet restore
       - name: Setup latest NuGet preview version
