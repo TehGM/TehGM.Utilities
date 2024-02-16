@@ -25,7 +25,7 @@ namespace TehGM.Utilities.ComponentModel
             if (value is Guid guid)
                 return new Base64Guid(guid);
             if (value is string str)
-                return new Base64Guid(str);
+                return Base64Guid.Parse(str);
             return base.ConvertFrom(context, culture, value);
         }
 

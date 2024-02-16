@@ -34,6 +34,7 @@ namespace TehGM.Utilities
         /// <param name="value">Display value of the GUID.</param>
         /// <exception cref="ArgumentNullException">Given value is null.</exception>
         /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        [Obsolete("Use Parse method instead.")]
         public Base64Guid(string value)
         {
             if (value == null)
@@ -51,6 +52,7 @@ namespace TehGM.Utilities
         /// <param name="value">Display value of the GUID.</param>
         /// <exception cref="ArgumentNullException">Given value is null.</exception>
         /// <exception cref="FormatException">Given value is in invalid format.</exception>
+        [Obsolete("Use Parse method instead.")]
         public Base64Guid(ReadOnlySpan<char> value)
         {
             this._value = ConvertStringToGuid(value);
@@ -295,7 +297,7 @@ namespace TehGM.Utilities
             => this._value.Equals(other);
         /// <inheritdoc/>
         public bool Equals(string other)
-            => this.Equals(new Base64Guid(other));
+            => this.Equals(Parse(other));
         /// <inheritdoc/>
         public override int GetHashCode()
             => -1937169414 + this._value.GetHashCode();
@@ -334,6 +336,6 @@ namespace TehGM.Utilities
         /// <summary>Converts string representation ID to base64 guid wrapper.</summary>
         /// <param name="value">Base64 wrapped guid.</param>
         public static implicit operator Base64Guid(string value)
-            => new Base64Guid(value);
+            => Parse(value);
     }
 }
