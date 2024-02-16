@@ -49,7 +49,7 @@ namespace TehGM.Utilities.Randomization
             Type t = typeof(T);
             if (!t.IsEnum)
                 throw new InvalidOperationException($"{nameof(GetRandomEnumValue)} can only be used on enums. {t.Name} is not an enum");
-#if NET5_0
+#if NET5_0_OR_GREATER
             T[] values = Enum.GetValues<T>();
 #else
             IEnumerable<T> values = Enum.GetValues(t).Cast<T>();
@@ -76,7 +76,11 @@ namespace TehGM.Utilities.Randomization
             if (length == 0)
                 return string.Empty;
 
+#if NET7_0_OR_GREATER
+            Span<char> chars = stackalloc char[length];
+#else
             char[] chars = new char[length];
+#endif
             for (int i = 0; i < length; i++)
                 chars[i] = charset[random.Next(0, charset.Length)];
 

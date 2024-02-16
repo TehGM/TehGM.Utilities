@@ -36,6 +36,38 @@ namespace TehGM.Utilities.Randomization.Tests
             result.Should().BeLessThanOrEqualTo(max);
         }
 
+#if NET6_0_OR_GREATER
+        [Test]
+        [Repeat(5)]
+        [Category(nameof(RandomizerService.GetRandomNumber))]
+        public void GetRandomNumber_Int64_WithinSpecifiedRange()
+        {
+            long min = 2;
+            long max = 4;
+            RandomizerService randomizer = new RandomizerService();
+
+            long result = randomizer.GetRandomNumber(min, max, true);
+
+            result.Should().BeGreaterThanOrEqualTo(min);
+            result.Should().BeLessThanOrEqualTo(max);
+        }
+
+        [Test]
+        [Repeat(5)]
+        [Category(nameof(RandomizerService.GetRandomNumber))]
+        public void GetRandomNumber_Float_WithinSpecifiedRange()
+        {
+            float min = 2.0f;
+            float max = 4.0f;
+            RandomizerService randomizer = new RandomizerService();
+
+            float result = randomizer.GetRandomNumber(min, max);
+
+            result.Should().BeGreaterThanOrEqualTo(min);
+            result.Should().BeLessThanOrEqualTo(max);
+        }
+#endif
+
         [Test]
         [TestCase(123, 10, 9, 8)]
         [TestCase(321, 4, 0, 1)]

@@ -31,5 +31,21 @@
             double range = max - min;
             return min + this._random.NextDouble() * range;
         }
+
+#if NET6_0_OR_GREATER
+        /// <inheritdoc/>
+        public long GetRandomNumber(long min, long max, bool inclusive)
+        {
+            max = (inclusive) ? ++max : max;
+            return this._random.NextInt64(min, max);
+        }
+
+        /// <inheritdoc/>
+        public float GetRandomNumber(float min, float max)
+        {
+            float range = max - min;
+            return min + this._random.NextSingle() * range;
+        }
+#endif
     }
 }
