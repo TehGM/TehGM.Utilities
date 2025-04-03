@@ -32,6 +32,8 @@ namespace TehGM.Utilities.ComponentModel
                 return new UnixTimestampMilliseconds(number32);
             if (value is string str)
                 return UnixTimestampMilliseconds.Parse(str, culture);
+            if (value is UnixTimestamp ut)
+                return new UnixTimestampMilliseconds(ut.Value * 1000);
             return base.ConvertFrom(context, culture, value);
         }
 
@@ -47,10 +49,12 @@ namespace TehGM.Utilities.ComponentModel
                 return timestamp.Value;
             if (destinationType == typeof(string))
                 return timestamp.ToString();
+            if (destinationType == typeof(UnixTimestamp))
+                return (UnixTimestamp)timestamp;
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
         private static bool IsSupportedType(Type type)
-            => type == typeof(DateTime) || type == typeof(DateTimeOffset) || type == typeof(long) || type == typeof(string);
+            => type == typeof(DateTime) || type == typeof(DateTimeOffset) || type == typeof(long) || type == typeof(string) || type == typeof(UnixTimestampMilliseconds);
     }
 }

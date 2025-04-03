@@ -34,6 +34,8 @@ namespace Newtonsoft.Json.Converters
                 writer.WriteValue(new UnixTimestamp(dt).Value);
             else if (value is DateTimeOffset dto)
                 writer.WriteValue(new UnixTimestamp(dto).Value);
+            else if (value is UnixTimestampMilliseconds utms)
+                writer.WriteValue(((UnixTimestamp)utms).Value);
         }
 
         /// <inheritdoc/>
@@ -47,6 +49,8 @@ namespace Newtonsoft.Json.Converters
                 return ut.ToDateTimeOffset();
             if (objectType == typeof(DateTime) || objectType == typeof(DateTime?))
                 return ut.ToDateTime();
+            if (objectType == typeof(UnixTimestampMilliseconds) || objectType == typeof(UnixTimestampMilliseconds?))
+                return ut.Value * 1000;
             return ut;
         }
     }

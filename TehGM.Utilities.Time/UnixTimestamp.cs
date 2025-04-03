@@ -9,8 +9,8 @@ namespace TehGM.Utilities
     /// <summary>Represents an unix timestamp (seconds only).</summary>
     [DebuggerDisplay("{Value,nq}")]
     [TypeConverter(typeof(UnixTimestampConverter))]
-    public struct UnixTimestamp : IEquatable<UnixTimestamp>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, 
-        IComparable<UnixTimestamp>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<long>, IConvertible
+    public struct UnixTimestamp : IEquatable<UnixTimestamp>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, IEquatable<UnixTimestampMilliseconds>,
+        IComparable<UnixTimestamp>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<UnixTimestampMilliseconds>, IComparable<long>, IConvertible
 #if NET7_0_OR_GREATER
         , IParsable<UnixTimestamp>, ISpanParsable<UnixTimestamp>
 #endif
@@ -49,6 +49,8 @@ namespace TehGM.Utilities
         {
             if (obj is UnixTimestamp ut)
                 return this.Equals(ut);
+            if (obj is UnixTimestampMilliseconds utms)
+                return this.Equals(utms);
             if (obj is DateTime dt)
                 return this.Equals(dt);
             if (obj is DateTimeOffset dto)
@@ -149,6 +151,10 @@ namespace TehGM.Utilities
             => this.Equals(other.Value);
 
         /// <inheritdoc/>
+        public bool Equals(UnixTimestampMilliseconds other)
+            => (this.Value * 1000).Equals(other.Value);
+
+        /// <inheritdoc/>
         public bool Equals(long other)
             => this.Value.Equals(other);
 
@@ -213,6 +219,10 @@ namespace TehGM.Utilities
         /// <inheritdoc/>
         public int CompareTo(UnixTimestamp other)
             => this.Value.CompareTo(other.Value);
+
+        /// <inheritdoc/>
+        public int CompareTo(UnixTimestampMilliseconds other)
+            => (this.Value * 1000).CompareTo(other.Value);
 
         /// <inheritdoc/>
         public int CompareTo(DateTimeOffset other)

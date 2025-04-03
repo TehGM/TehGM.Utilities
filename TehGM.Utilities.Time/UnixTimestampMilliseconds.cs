@@ -9,8 +9,8 @@ namespace TehGM.Utilities
     /// <summary>Represents an unix timestamp (milliseconds).</summary>
     [DebuggerDisplay("{Value,nq}")]
     [TypeConverter(typeof(UnixTimestampMillisecondsConverter))]
-    public struct UnixTimestampMilliseconds : IEquatable<UnixTimestampMilliseconds>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, 
-        IComparable<UnixTimestampMilliseconds>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<long>, IConvertible
+    public struct UnixTimestampMilliseconds : IEquatable<UnixTimestampMilliseconds>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, IEquatable<UnixTimestamp>,
+        IComparable<UnixTimestampMilliseconds>, IComparable<UnixTimestamp>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<long>, IConvertible
 #if NET7_0_OR_GREATER
         , IParsable<UnixTimestampMilliseconds>, ISpanParsable<UnixTimestampMilliseconds>
 #endif
@@ -47,7 +47,9 @@ namespace TehGM.Utilities
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj is UnixTimestampMilliseconds ut)
+            if (obj is UnixTimestampMilliseconds utms)
+                return this.Equals(utms);
+            if (obj is UnixTimestamp ut)
                 return this.Equals(ut);
             if (obj is DateTime dt)
                 return this.Equals(dt);
@@ -149,6 +151,10 @@ namespace TehGM.Utilities
             => this.Equals(other.Value);
 
         /// <inheritdoc/>
+        public bool Equals(UnixTimestamp other)
+            => this.Equals(other.Value * 1000);
+
+        /// <inheritdoc/>
         public bool Equals(long other)
             => this.Value.Equals(other);
 
@@ -179,14 +185,18 @@ namespace TehGM.Utilities
         public static bool operator !=(UnixTimestampMilliseconds left, UnixTimestampMilliseconds right)
             => !(left == right);
 
-        /// <summary>Creates a new unix timestamp.</summary>
+        /// <summary>Creates a new unix timestamp with milliseconds precision.</summary>
         /// <param name="value">DateTime to get unix timestamp from.</param>
         public static explicit operator UnixTimestampMilliseconds(DateTime value)
             => new UnixTimestampMilliseconds(value);
-        /// <summary>Creates a new unix timestamp.</summary>
+        /// <summary>Creates a new unix timestamp with milliseconds precision.</summary>
         /// <param name="value">DateTimeOffset to get unix timestamp from.</param>
         public static explicit operator UnixTimestampMilliseconds(DateTimeOffset value)
             => new UnixTimestampMilliseconds(value);
+        /// <summary>Creates a new unix timestamp with milliseconds precision.</summary>
+        /// <param name="value">UnixTimestamp to get unix timestamp from.</param>
+        public static implicit operator UnixTimestampMilliseconds(UnixTimestamp value)
+            => new UnixTimestampMilliseconds(value.Value * 1000);
 
         /// <summary>Gets DateTime value of the timestamp.</summary>
         /// <param name="value">Unix timestamp.</param>
@@ -196,6 +206,10 @@ namespace TehGM.Utilities
         /// <param name="value">Unix timestamp.</param>
         public static implicit operator DateTimeOffset(UnixTimestampMilliseconds value)
             => value.ToDateTimeOffset();
+        /// <summary>Gets UnixTimestamp value of the timestamp.</summary>
+        /// <param name="value">Unix timestamp.</param>
+        public static explicit operator UnixTimestamp(UnixTimestampMilliseconds value)
+            => new UnixTimestamp(value.ToDateTime());
 
         /// <inheritdoc/>
         public override string ToString()
@@ -213,6 +227,10 @@ namespace TehGM.Utilities
         /// <inheritdoc/>
         public int CompareTo(UnixTimestampMilliseconds other)
             => this.Value.CompareTo(other.Value);
+
+        /// <inheritdoc/>
+        public int CompareTo(UnixTimestamp other)
+            => this.Value.CompareTo(other.Value * 1000);
 
         /// <inheritdoc/>
         public int CompareTo(DateTimeOffset other)

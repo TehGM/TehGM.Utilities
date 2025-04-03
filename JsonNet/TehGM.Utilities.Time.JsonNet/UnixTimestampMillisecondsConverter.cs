@@ -28,12 +28,14 @@ namespace Newtonsoft.Json.Converters
         {
             if (value == null)
                 writer.WriteNull();
-            else if (value is UnixTimestampMilliseconds ut)
-                writer.WriteValue(ut.Value);
+            else if (value is UnixTimestampMilliseconds utms)
+                writer.WriteValue(utms.Value);
             else if (value is DateTime dt)
                 writer.WriteValue(new UnixTimestampMilliseconds(dt).Value);
             else if (value is DateTimeOffset dto)
                 writer.WriteValue(new UnixTimestampMilliseconds(dto).Value);
+            else if (value is UnixTimestamp ut)
+                writer.WriteValue(new UnixTimestampMilliseconds(ut.Value * 1000).Value);
         }
 
         /// <inheritdoc/>
@@ -42,12 +44,14 @@ namespace Newtonsoft.Json.Converters
             if (reader.Value == null)
                 return null;
 
-            UnixTimestampMilliseconds ut = new UnixTimestampMilliseconds((long)reader.Value);
+            UnixTimestampMilliseconds utms = new UnixTimestampMilliseconds((long)reader.Value);
             if (objectType == typeof(DateTimeOffset) || objectType == typeof(DateTimeOffset?))
-                return ut.ToDateTimeOffset();
+                return utms.ToDateTimeOffset();
             if (objectType == typeof(DateTime) || objectType == typeof(DateTime?))
-                return ut.ToDateTime();
-            return ut;
+                return utms.ToDateTime();
+            if (objectType == typeof(UnixTimestamp) || objectType == typeof(UnixTimestamp?))
+                return (UnixTimestamp)utms;
+            return utms;
         }
     }
 }

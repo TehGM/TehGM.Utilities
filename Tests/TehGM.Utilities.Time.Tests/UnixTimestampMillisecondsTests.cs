@@ -71,6 +71,20 @@ namespace TehGM.Utilities.Time.Tests
         }
 
         [Test]
+        [TestCase(1656002616, 1656002616000)]
+        [TestCase(811845000, 811845000000)]
+        [TestCase(923727602, 923727602000)]
+        [Category(TestCategoryName.Conversions)]
+        public void ImplicitConversion_FromUnixTimestamp_ConvertsValue(long value, long expectedResult)
+        {
+            UnixTimestamp ut = new UnixTimestamp(value);
+
+            UnixTimestampMilliseconds timestamp = ut;
+
+            timestamp.Value.Should().Be(expectedResult);
+        }
+
+        [Test]
         [TestCase(637915994167465978, 637915994167460000)]
         [TestCase(629474418000000000, 629474418000000000)]
         [TestCase(630593244022000000, 630593244022000000)]
@@ -130,6 +144,21 @@ namespace TehGM.Utilities.Time.Tests
             UnixTimestampMilliseconds timestamp = new UnixTimestampMilliseconds(dto);
 
             DateTimeOffset result = timestamp;
+
+            result.Should().Be(expectedResult);
+        }
+
+        [Test]
+        [TestCase(1656002616746, 1656002616)]
+        [TestCase(811845000000, 811845000)]
+        [TestCase(923727602200, 923727602)]
+        [Category(TestCategoryName.Conversions)]
+        public void ExplicitConversions_ToUnixTimestamp_ReturnsExpectedValue(long value, long expectedResult)
+        {
+            UnixTimestamp ut = new UnixTimestamp(expectedResult);
+            UnixTimestampMilliseconds timestamp = new UnixTimestampMilliseconds(value);
+
+            UnixTimestamp result = (UnixTimestamp)timestamp;
 
             result.Should().Be(expectedResult);
         }
