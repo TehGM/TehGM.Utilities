@@ -73,76 +73,52 @@ jobs:
       - name: Setup latest NuGet preview version
         uses: NuGet/setup-nuget@v1.0.5
         with:
-          nuget-version: 'preview'
+          nuget-version: '6.1.x'
+      - name: Create output directory for packages
+        run: |
+          mkdir __out
       
       # Publish each package
       - name: Publish TehGM.Utilities.UniqueIDs
         if: github.event.inputs.publishUniqueIDs == 'Y'
         run: |
-          mkdir __out
           dotnet pack TehGM.Utilities.UniqueIDs -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
       - name: Publish TehGM.Utilities.UniqueIDs.JsonNet
         if: github.event.inputs.publishUniqueIDsJsonNet == 'Y'
         run: |
-          mkdir __out
-          dotnet pack JsonNet/TehGM.Utilities.UniqueIDs.JsonNet -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
+          dotnet pack TehGM.Utilities.UniqueIDs.JsonNet -c Release -o __out --no-restore
       - name: Publish TehGM.Utilities.Logging
         if: github.event.inputs.publishLogging == 'Y'
         run: |
-          mkdir __out
           dotnet pack TehGM.Utilities.Logging -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
       - name: Publish TehGM.Utilities.Randomization
         if: github.event.inputs.publishRandomization == 'Y'
         run: |
-          mkdir __out
           dotnet pack TehGM.Utilities.Randomization -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
       - name: Publish TehGM.Utilities.Time
         if: github.event.inputs.publishTime == 'Y'
         run: |
-          mkdir __out
           dotnet pack TehGM.Utilities.Time -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
       - name: Publish TehGM.Utilities.Time.JsonNet
         if: github.event.inputs.publishTimeJsonNet == 'Y'
         run: |
-          mkdir __out
-          dotnet pack JsonNet/TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
+          dotnet pack TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
       - name: Publish TehGM.Utilities.Validation
         if: github.event.inputs.publishValidation == 'Y'
         run: |
-          mkdir __out
           dotnet pack TehGM.Utilities.Validation -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
       - name: Publish TehGM.Utilities.Threading
         if: github.event.inputs.publishThreading == 'Y'
         run: |
-          mkdir __out
           dotnet pack TehGM.Utilities.Threading -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
       - name: Publish TehGM.Utilities.AspNetCore
         if: github.event.inputs.publishAspNetCore == 'Y'
         run: |
-          mkdir __out
           dotnet pack TehGM.Utilities.AspNetCore -c Release -o __out --no-restore
-          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
       - name: Publish TehGM.Utilities metapackage
         if: github.event.inputs.publishMetapackage == 'Y'
         run: |
-          mkdir __out
           nuget pack "TehGM.Utilities/TehGM.Utilities.nuspec" -Exclude "*.*" -BasePath "TehGM.Utilities" -NonInteractive -OutputDirectory __out
+      - name: Push packages to NuGet
+        run: |
           dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols --api-key ${{secrets.NUGET_TOKEN}}
-          rm -rf __out
