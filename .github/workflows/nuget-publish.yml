@@ -86,7 +86,7 @@ jobs:
       - name: Publish TehGM.Utilities.UniqueIDs.JsonNet
         if: github.event.inputs.publishUniqueIDsJsonNet == 'Y'
         run: |
-          dotnet pack TehGM.Utilities.UniqueIDs.JsonNet -c Release -o __out --no-restore
+          dotnet pack JsonNet/TehGM.Utilities.UniqueIDs.JsonNet -c Release -o __out --no-restore
       - name: Publish TehGM.Utilities.Logging
         if: github.event.inputs.publishLogging == 'Y'
         run: |
@@ -102,7 +102,7 @@ jobs:
       - name: Publish TehGM.Utilities.Time.JsonNet
         if: github.event.inputs.publishTimeJsonNet == 'Y'
         run: |
-          dotnet pack TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
+          dotnet pack JsonNet/TehGM.Utilities.Time.JsonNet -c Release -o __out --no-restore
       - name: Publish TehGM.Utilities.Validation
         if: github.event.inputs.publishValidation == 'Y'
         run: |
