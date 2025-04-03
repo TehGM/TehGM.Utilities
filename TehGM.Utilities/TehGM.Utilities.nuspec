@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>TehGM.Utilities</id>
-    <version>0.2.3</version>
+    <version>0.2.4</version>
     <title>TehGM's C# Utilities</title>
     <authors>TehGM</authors>
     <owners>TehGM</owners>
@@ -14,18 +14,15 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <copyright>Copyright (c) 2022 TehGM</copyright>
     <releaseNotes>
-- UniqueIDs: Base64Guid constructor accepting string is now obsolete. Use Parse method instead.
-- UniqueIDs: Reduce heap allocations and improve performance of Base64Guid on .NET7+.
-- UniqueIDs: Fix wrong type named used in some of Base64Guid exception messages.
-- Randomization: Add support for long and float-based random number generation (.NET 6+).
-- Randomization: Minor performance and heap allocation optimization for random string on .NET 7+.
+- Time: Add UnixTimestampMilliseconds type with corresponding converters.
+- Time: UnixTimestamp now supports conversions to and from the new UnixTimestampMilliseconds type.
 	</releaseNotes>
     <dependencies>
       <group>
         <dependency id="TehGM.Utilities.UniqueID" version="0.2.3" />
         <dependency id="TehGM.Utilities.Logging" version="0.1.0" />
         <dependency id="TehGM.Utilities.Randomization" version="0.2.3" />
-        <dependency id="TehGM.Utilities.Time" version="0.2.2" />
+        <dependency id="TehGM.Utilities.Time" version="0.2.4" />
         <dependency id="TehGM.Utilities.Validation" version="0.1.0" />
         <dependency id="TehGM.Utilities.Threading" version="0.2.0" />
       </group>
