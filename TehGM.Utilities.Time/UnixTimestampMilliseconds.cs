@@ -6,51 +6,51 @@ using TehGM.Utilities.ComponentModel;
 
 namespace TehGM.Utilities
 {
-    /// <summary>Represents an unix timestamp (seconds only).</summary>
+    /// <summary>Represents an unix timestamp (milliseconds).</summary>
     [DebuggerDisplay("{Value,nq}")]
-    [TypeConverter(typeof(UnixTimestampConverter))]
-    public struct UnixTimestamp : IEquatable<UnixTimestamp>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, IEquatable<UnixTimestampMilliseconds>,
-        IComparable<UnixTimestamp>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<UnixTimestampMilliseconds>, IComparable<long>, IConvertible
+    [TypeConverter(typeof(UnixTimestampMillisecondsConverter))]
+    public struct UnixTimestampMilliseconds : IEquatable<UnixTimestampMilliseconds>, IEquatable<long>, IEquatable<DateTime>, IEquatable<DateTimeOffset>, IEquatable<UnixTimestamp>,
+        IComparable<UnixTimestampMilliseconds>, IComparable<UnixTimestamp>, IComparable<DateTime>, IComparable<DateTimeOffset>, IComparable<long>, IConvertible
 #if NET7_0_OR_GREATER
-        , IParsable<UnixTimestamp>, ISpanParsable<UnixTimestamp>
+        , IParsable<UnixTimestampMilliseconds>, ISpanParsable<UnixTimestampMilliseconds>
 #endif
     {
         /// <summary>DateTime value of Unix Epoch.</summary>
         public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
         private static readonly DateTimeOffset _epochOffset = new DateTimeOffset(Epoch);
 
-        /// <summary>Seconds value of the timestamp.</summary>
+        /// <summary>Milliseconds value of the timestamp.</summary>
         public long Value { get; }
 
         /// <summary>Creates a new unix timestamp.</summary>
         /// <param name="value">Raw value of the timestamp.</param>
-        public UnixTimestamp(long value)
+        public UnixTimestampMilliseconds(long value)
         {
             this.Value = value;
         }
 
         /// <summary>Creates a new unix timestamp.</summary>
         /// <param name="value">DateTime to get unix timestamp from.</param>
-        public UnixTimestamp(DateTime value)
+        public UnixTimestampMilliseconds(DateTime value)
         {
-            double seconds = ((DateTime)value - Epoch).TotalSeconds;
-            this.Value = (long)seconds;
+            double milliseconds = ((DateTime)value - Epoch).TotalMilliseconds;
+            this.Value = (long)milliseconds;
         }
 
         /// <summary>Creates a new unix timestamp.</summary>
         /// <param name="value">DateTimeOffset to get unix timestamp from.</param>
-        public UnixTimestamp(DateTimeOffset value)
+        public UnixTimestampMilliseconds(DateTimeOffset value)
         {
-            this.Value = value.ToUnixTimeSeconds();
+            this.Value = value.ToUnixTimeMilliseconds();
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj is UnixTimestamp ut)
-                return this.Equals(ut);
             if (obj is UnixTimestampMilliseconds utms)
                 return this.Equals(utms);
+            if (obj is UnixTimestamp ut)
+                return this.Equals(ut);
             if (obj is DateTime dt)
                 return this.Equals(dt);
             if (obj is DateTimeOffset dto)
@@ -60,59 +60,59 @@ namespace TehGM.Utilities
             return false;
         }
 
-        /// <summary>Converts the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
-        /// <param name="value">String representation of UnixTimestamp.</param>
+        /// <summary>Converts the string representation of a UnixTimestampMilliseconds or Int64 to a UnixTimestampMilliseconds instance.</summary>
+        /// <param name="value">String representation of UnixTimestampMilliseconds.</param>
         /// <exception cref="ArgumentNullException">Given value is null.</exception>
         /// <exception cref="FormatException">Given value is in invalid format.</exception>
-        /// <returns>Parsed UnixTimestamp value.</returns>
-        public static UnixTimestamp Parse(string value)
+        /// <returns>Parsed UnixTimestampMilliseconds value.</returns>
+        public static UnixTimestampMilliseconds Parse(string value)
             => Parse(value, null);
 
-        /// <summary>Converts the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
-        /// <param name="value">String representation of UnixTimestamp.</param>
+        /// <summary>Converts the string representation of a UnixTimestampMilliseconds or Int64 to a UnixTimestampMilliseconds instance.</summary>
+        /// <param name="value">String representation of UnixTimestampMilliseconds.</param>
         /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
         /// <exception cref="ArgumentNullException">Given value is null.</exception>
         /// <exception cref="FormatException">Given value is in invalid format.</exception>
-        /// <returns>Parsed UnixTimestamp value.</returns>
-        public static UnixTimestamp Parse(string value, IFormatProvider provider)
+        /// <returns>Parsed UnixTimestampMilliseconds value.</returns>
+        public static UnixTimestampMilliseconds Parse(string value, IFormatProvider provider)
         {
             long numberValue = long.Parse(value, provider);
-            return new UnixTimestamp(numberValue);
+            return new UnixTimestampMilliseconds(numberValue);
         }
 
 #if NET7_0_OR_GREATER
-        /// <summary>Converts the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <summary>Converts the string representation of a UnixTimestampMilliseconds or Int64 to a UnixTimestampMilliseconds instance.</summary>
         /// <param name="value">The span of characters to parse.</param>
         /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
         /// <exception cref="ArgumentNullException">Given value is null.</exception>
         /// <exception cref="FormatException">Given value is in invalid format.</exception>
-        /// <returns>Parsed UnixTimestamp value.</returns>
-        public static UnixTimestamp Parse(ReadOnlySpan<char> value, IFormatProvider provider)
+        /// <returns>Parsed UnixTimestampMilliseconds value.</returns>
+        public static UnixTimestampMilliseconds Parse(ReadOnlySpan<char> value, IFormatProvider provider)
         {
             long numberValue = long.Parse(value, provider);
-            return new UnixTimestamp(numberValue);
+            return new UnixTimestampMilliseconds(numberValue);
         }
 #endif
 
-        /// <summary>Attempts to convert the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
-        /// <param name="value">String representation of UnixTimestamp.</param>
-        /// <param name="result">Parsed UnixTimestamp value.</param>
-        public static bool TryParse(string value, out UnixTimestamp result)
+        /// <summary>Attempts to convert the string representation of a UnixTimestampMilliseconds or Int64 to a UnixTimestampMilliseconds instance.</summary>
+        /// <param name="value">String representation of UnixTimestampMilliseconds.</param>
+        /// <param name="result">Parsed UnixTimestampMilliseconds value.</param>
+        public static bool TryParse(string value, out UnixTimestampMilliseconds result)
         {
             if (long.TryParse(value, out long numberValue))
             {
-                result = new UnixTimestamp(numberValue);
+                result = new UnixTimestampMilliseconds(numberValue);
                 return true;
             }
             result = default;
             return false;
         }
 
-        /// <summary>Attempts to convert the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
-        /// <param name="value">String representation of UnixTimestamp.</param>
+        /// <summary>Attempts to convert the string representation of a UnixTimestampMilliseconds or Int64 to a UnixTimestampMilliseconds instance.</summary>
+        /// <param name="value">String representation of UnixTimestampMilliseconds.</param>
         /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
-        /// <param name="result">Parsed UnixTimestamp value.</param>
-        public static bool TryParse(string value, IFormatProvider provider, out UnixTimestamp result)
+        /// <param name="result">Parsed UnixTimestampMilliseconds value.</param>
+        public static bool TryParse(string value, IFormatProvider provider, out UnixTimestampMilliseconds result)
         {
 
 #if NET7_0_OR_GREATER
@@ -122,7 +122,7 @@ namespace TehGM.Utilities
             if (long.TryParse(value, System.Globalization.NumberStyles.Integer, provider, out long numberValue))
 #endif
             {
-                result = new UnixTimestamp(numberValue);
+                result = new UnixTimestampMilliseconds(numberValue);
                 return true;
             }
             result = default;
@@ -130,15 +130,15 @@ namespace TehGM.Utilities
         }
 
 #if NET7_0_OR_GREATER
-        /// <summary>Attempts to convert the string representation of a UnixTimestamp or Int64 to a UnixTimestamp instance.</summary>
+        /// <summary>Attempts to convert the string representation of a UnixTimestampMilliseconds or Int64 to a UnixTimestampMilliseconds instance.</summary>
         /// <param name="value">The span of characters to parse.</param>
         /// <param name="provider">An object that provides culture-specific formatting information about value.</param>
-        /// <param name="result">Parsed UnixTimestamp value.</param>
-        public static bool TryParse(ReadOnlySpan<char> value, IFormatProvider provider, [MaybeNullWhen(false)] out UnixTimestamp result)
+        /// <param name="result">Parsed UnixTimestampMilliseconds value.</param>
+        public static bool TryParse(ReadOnlySpan<char> value, IFormatProvider provider, [MaybeNullWhen(false)] out UnixTimestampMilliseconds result)
         {
             if (long.TryParse(value, provider, out long numberValue))
             {
-                result = new UnixTimestamp(numberValue);
+                result = new UnixTimestampMilliseconds(numberValue);
                 return true;
             }
             result = default;
@@ -147,12 +147,12 @@ namespace TehGM.Utilities
 #endif
 
         /// <inheritdoc/>
-        public bool Equals(UnixTimestamp other)
+        public bool Equals(UnixTimestampMilliseconds other)
             => this.Equals(other.Value);
 
         /// <inheritdoc/>
-        public bool Equals(UnixTimestampMilliseconds other)
-            => (this.Value * 1000).Equals(other.Value);
+        public bool Equals(UnixTimestamp other)
+            => this.Equals(other.Value * 1000);
 
         /// <inheritdoc/>
         public bool Equals(long other)
@@ -160,11 +160,11 @@ namespace TehGM.Utilities
 
         /// <inheritdoc/>
         public bool Equals(DateTime other)
-            => this.Equals(new UnixTimestamp(other));
+            => this.Equals(new UnixTimestampMilliseconds(other));
 
         /// <inheritdoc/>
         public bool Equals(DateTimeOffset other)
-            => this.Equals(new UnixTimestamp(other));
+            => this.Equals(new UnixTimestampMilliseconds(other));
 
         /// <inheritdoc/>
         public override int GetHashCode()
@@ -172,36 +172,44 @@ namespace TehGM.Utilities
 
         /// <summary>Gets DateTime value of the timestamp.</summary>
         public DateTime ToDateTime()
-            => Epoch.AddSeconds(this.Value);
+            => Epoch.AddMilliseconds(this.Value);
         /// <summary>Gets DateTimeOffset value of the timestamp.</summary>
         public DateTimeOffset ToDateTimeOffset()
-            => _epochOffset.AddSeconds(this.Value);
+            => _epochOffset.AddMilliseconds(this.Value);
 
         /// <inheritdoc/>
-        public static bool operator ==(UnixTimestamp left, UnixTimestamp right)
+        public static bool operator ==(UnixTimestampMilliseconds left, UnixTimestampMilliseconds right)
             => left.Equals(right);
 
         /// <inheritdoc/>
-        public static bool operator !=(UnixTimestamp left, UnixTimestamp right)
+        public static bool operator !=(UnixTimestampMilliseconds left, UnixTimestampMilliseconds right)
             => !(left == right);
 
-        /// <summary>Creates a new unix timestamp.</summary>
+        /// <summary>Creates a new unix timestamp with milliseconds precision.</summary>
         /// <param name="value">DateTime to get unix timestamp from.</param>
-        public static explicit operator UnixTimestamp(DateTime value)
-            => new UnixTimestamp(value);
-        /// <summary>Creates a new unix timestamp.</summary>
+        public static explicit operator UnixTimestampMilliseconds(DateTime value)
+            => new UnixTimestampMilliseconds(value);
+        /// <summary>Creates a new unix timestamp with milliseconds precision.</summary>
         /// <param name="value">DateTimeOffset to get unix timestamp from.</param>
-        public static explicit operator UnixTimestamp(DateTimeOffset value)
-            => new UnixTimestamp(value);
+        public static explicit operator UnixTimestampMilliseconds(DateTimeOffset value)
+            => new UnixTimestampMilliseconds(value);
+        /// <summary>Creates a new unix timestamp with milliseconds precision.</summary>
+        /// <param name="value">UnixTimestamp to get unix timestamp from.</param>
+        public static implicit operator UnixTimestampMilliseconds(UnixTimestamp value)
+            => new UnixTimestampMilliseconds(value.Value * 1000);
 
         /// <summary>Gets DateTime value of the timestamp.</summary>
         /// <param name="value">Unix timestamp.</param>
-        public static implicit operator DateTime(UnixTimestamp value)
+        public static implicit operator DateTime(UnixTimestampMilliseconds value)
             => value.ToDateTime();
         /// <summary>Gets DateTimeOffset value of the timestamp.</summary>
         /// <param name="value">Unix timestamp.</param>
-        public static implicit operator DateTimeOffset(UnixTimestamp value)
+        public static implicit operator DateTimeOffset(UnixTimestampMilliseconds value)
             => value.ToDateTimeOffset();
+        /// <summary>Gets UnixTimestamp value of the timestamp.</summary>
+        /// <param name="value">Unix timestamp.</param>
+        public static explicit operator UnixTimestamp(UnixTimestampMilliseconds value)
+            => new UnixTimestamp(value.ToDateTime());
 
         /// <inheritdoc/>
         public override string ToString()
@@ -217,12 +225,12 @@ namespace TehGM.Utilities
             => this.ToDateTime().CompareTo(other);
 
         /// <inheritdoc/>
-        public int CompareTo(UnixTimestamp other)
+        public int CompareTo(UnixTimestampMilliseconds other)
             => this.Value.CompareTo(other.Value);
 
         /// <inheritdoc/>
-        public int CompareTo(UnixTimestampMilliseconds other)
-            => (this.Value * 1000).CompareTo(other.Value);
+        public int CompareTo(UnixTimestamp other)
+            => this.Value.CompareTo(other.Value * 1000);
 
         /// <inheritdoc/>
         public int CompareTo(DateTimeOffset other)

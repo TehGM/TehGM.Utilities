@@ -4,7 +4,7 @@
 	  <PackageId>TehGM.Utilities.Time</PackageId>
       <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
 	  <RootNamespace>TehGM.Utilities</RootNamespace>
-	  <Version>0.2.2</Version>
+	  <Version>0.2.4</Version>
       <Authors>TehGM</Authors>
 	  <Product>TehGM's Utilities Library - Time</Product>
 	  <RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
@@ -19,8 +19,8 @@
 	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageReleaseNotes>
-- Added TypeConverter for UnixTimestamp.
-- Implement IParsable and ISpanParsable in UnixTimestamp (.NET7+).
+- Add UnixTimestampMilliseconds type with corresponding converters.
+- UnixTimestamp now supports conversions to and from the new UnixTimestampMilliseconds type.
 	  </PackageReleaseNotes>
   </PropertyGroup>
 	

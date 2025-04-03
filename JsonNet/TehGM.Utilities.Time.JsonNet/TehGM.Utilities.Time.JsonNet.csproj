@@ -4,7 +4,7 @@
 		<PackageId>TehGM.Utilities.Time.JsonNet</PackageId>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>TehGM.Utilities</RootNamespace>
-		<Version>0.2.2</Version>
+		<Version>0.2.4</Version>
 		<Authors>TehGM</Authors>
 		<Product>TehGM's Utilities Library - Time - JSON.NET</Product>
 		<RepositoryUrl>https://github.com/TehGM/TehGM.Utilities</RepositoryUrl>
@@ -18,7 +18,7 @@
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>- Compat with Time v0.2.2.</PackageReleaseNotes>
+		<PackageReleaseNotes>- Compat with Time v0.2.4.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>

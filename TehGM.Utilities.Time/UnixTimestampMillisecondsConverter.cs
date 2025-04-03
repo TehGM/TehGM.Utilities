@@ -4,8 +4,8 @@ using System.Globalization;
 
 namespace TehGM.Utilities.ComponentModel
 {
-    /// <summary>Provides a type converter to convert <see cref="UnixTimestamp"/> objects to and from various other representations.</summary>
-    public class UnixTimestampConverter : TypeConverter
+    /// <summary>Provides a type converter to convert <see cref="UnixTimestampMilliseconds"/> objects to and from various other representations.</summary>
+    public class UnixTimestampMillisecondsConverter : TypeConverter
     {
         /// <inheritdoc/>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -23,24 +23,24 @@ namespace TehGM.Utilities.ComponentModel
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             if (value is DateTime dt)
-                return new UnixTimestamp(dt);
+                return new UnixTimestampMilliseconds(dt);
             if (value is DateTimeOffset dto)
-                return new UnixTimestamp(dto);
+                return new UnixTimestampMilliseconds(dto);
             if (value is long number64)
-                return new UnixTimestamp(number64);
+                return new UnixTimestampMilliseconds(number64);
             if (value is int number32)
-                return new UnixTimestamp(number32);
+                return new UnixTimestampMilliseconds(number32);
             if (value is string str)
-                return UnixTimestamp.Parse(str, culture);
-            if (value is UnixTimestampMilliseconds)
-                return (UnixTimestamp)value;
+                return UnixTimestampMilliseconds.Parse(str, culture);
+            if (value is UnixTimestamp ut)
+                return new UnixTimestampMilliseconds(ut.Value * 1000);
             return base.ConvertFrom(context, culture, value);
         }
 
         /// <inheritdoc/>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            UnixTimestamp timestamp = (UnixTimestamp)value;
+            UnixTimestampMilliseconds timestamp = (UnixTimestampMilliseconds)value;
             if (destinationType == typeof(DateTime))
                 return timestamp.ToDateTime();
             if (destinationType == typeof(DateTimeOffset))
@@ -49,8 +49,8 @@ namespace TehGM.Utilities.ComponentModel
                 return timestamp.Value;
             if (destinationType == typeof(string))
                 return timestamp.ToString();
-            if (destinationType == typeof(UnixTimestampMilliseconds))
-                return new UnixTimestampMilliseconds(timestamp.Value * 1000);
+            if (destinationType == typeof(UnixTimestamp))
+                return (UnixTimestamp)timestamp;
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
