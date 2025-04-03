@@ -45,16 +45,19 @@ on:
         required: true
         default: 'Y'
 
+env:
+  DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1
+
 jobs:
   nuget-publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       # Prepare environment
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           source-url: https://api.nuget.org/v3/index.json
           dotnet-version: |
