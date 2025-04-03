@@ -40,7 +40,9 @@ namespace TehGM.Utilities
         /// <summary>Creates a new unix timestamp.</summary>
         /// <param name="value">DateTimeOffset to get unix timestamp from.</param>
         public UnixTimestamp(DateTimeOffset value)
-            : this(value.UtcDateTime) { }
+        {
+            this.Value = value.ToUnixTimeSeconds();
+        }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
